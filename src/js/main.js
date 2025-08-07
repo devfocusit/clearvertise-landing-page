@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize scroll state on page load
     updateActiveNavigation();
 
-    // Carousel functionality with smooth rolling transitions
+    // Enhanced Carousel functionality with swiper-like experience
     const categoryBtns = document.querySelectorAll('.category-btn');
     const carouselTrack = document.querySelector('.carousel-track');
     const carouselSlides = document.querySelectorAll('.carousel-slide');
@@ -45,9 +45,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextBtn = document.querySelector('.carousel-next');
     const prevCard = document.querySelector('.prev-card');
     const nextCard = document.querySelector('.next-card');
+    const carouselWrapper = document.querySelector('.carousel-wrapper');
+    const paginationDots = document.querySelectorAll('.pagination-dot');
     
     let currentSlide = 0;
     const totalSlides = carouselSlides.length;
+    let isTransitioning = false;
+    
+    // Touch/drag functionality
+    let startX = 0;
+    let currentX = 0;
+    let initialTranslate = 0;
+    let isDragging = false;
 
     // Slide data for preview cards
     const slideData = [
@@ -60,8 +69,18 @@ document.addEventListener('DOMContentLoaded', function() {
         { icon: '🎯', title: 'Advertising', content: 'Cross-platform ad management with ROI optimization and targeting' }
     ];
 
-    function updateCarousel() {
+    function updateCarousel(animate = true) {
         if (!carouselTrack) return;
+        
+        // Prevent multiple transitions
+        if (isTransitioning && animate) return;
+        
+        if (animate) {
+            isTransitioning = true;
+            carouselTrack.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        } else {
+            carouselTrack.style.transition = 'none';
+        }
         
         // Update main carousel position
         const translateX = -currentSlide * 100;
@@ -70,6 +89,11 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update category buttons
         categoryBtns.forEach((btn, index) => {
             btn.classList.toggle('active', index === currentSlide);
+        });
+
+        // Update pagination dots
+        paginationDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
         });
 
         // Update preview cards
@@ -99,26 +123,103 @@ document.addEventListener('DOMContentLoaded', function() {
             if (nextCardTitle) nextCardTitle.textContent = nextData.title;
             if (nextCardContent) nextCardContent.textContent = nextData.content;
         }
+
+        // Reset transition flag after animation
+        if (animate) {
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 600);
+        }
     }
 
-    function goToSlide(index) {
+    function goToSlide(index, animate = true) {
+        if (isTransitioning && animate) return;
         currentSlide = index;
-        updateCarousel();
+        updateCarousel(animate);
     }
 
     function nextSlide() {
+        if (isTransitioning) return;
         currentSlide = currentSlide < totalSlides - 1 ? currentSlide + 1 : 0;
         updateCarousel();
     }
 
     function prevSlide() {
+        if (isTransitioning) return;
         currentSlide = currentSlide > 0 ? currentSlide - 1 : totalSlides - 1;
         updateCarousel();
+    }
+
+    // Touch/Mouse drag functionality
+    function getPositionX(e) {
+        return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+    }
+
+    function dragStart(e) {
+        if (isTransitioning) return;
+        
+        isDragging = true;
+        startX = getPositionX(e);
+        initialTranslate = -currentSlide * 100;
+        
+        carouselTrack.style.transition = 'none';
+        carouselWrapper.style.cursor = 'grabbing';
+        
+        // Prevent default to avoid text selection
+        e.preventDefault();
+    }
+
+    function dragMove(e) {
+        if (!isDragging || isTransitioning) return;
+        
+        currentX = getPositionX(e);
+        const diffX = currentX - startX;
+        const dragPercentage = (diffX / carouselWrapper.offsetWidth) * 100;
+        const newTranslate = initialTranslate + dragPercentage;
+        
+        // Add resistance at boundaries
+        let finalTranslate = newTranslate;
+        const maxTranslate = -(totalSlides - 1) * 100;
+        
+        if (newTranslate > 0) {
+            finalTranslate = newTranslate * 0.3; // Resistance at start
+        } else if (newTranslate < maxTranslate) {
+            finalTranslate = maxTranslate + (newTranslate - maxTranslate) * 0.3; // Resistance at end
+        }
+        
+        carouselTrack.style.transform = `translateX(${finalTranslate}%)`;
+    }
+
+    function dragEnd() {
+        if (!isDragging) return;
+        
+        isDragging = false;
+        carouselWrapper.style.cursor = 'grab';
+        
+        const diffX = currentX - startX;
+        const threshold = carouselWrapper.offsetWidth * 0.2; // 20% threshold
+        
+        if (Math.abs(diffX) > threshold) {
+            if (diffX > 0 && currentSlide > 0) {
+                prevSlide();
+            } else if (diffX < 0 && currentSlide < totalSlides - 1) {
+                nextSlide();
+            } else {
+                updateCarousel(); // Snap back to current slide
+            }
+        } else {
+            updateCarousel(); // Snap back to current slide
+        }
     }
 
     // Event listeners for carousel
     categoryBtns.forEach((btn, index) => {
         btn.addEventListener('click', () => goToSlide(index));
+    });
+
+    // Pagination dots
+    paginationDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
     });
 
     if (nextBtn) nextBtn.addEventListener('click', nextSlide);
@@ -128,14 +229,49 @@ document.addEventListener('DOMContentLoaded', function() {
     if (prevCard) prevCard.addEventListener('click', prevSlide);
     if (nextCard) nextCard.addEventListener('click', nextSlide);
 
+    // Touch events
+    if (carouselWrapper) {
+        carouselWrapper.style.cursor = 'grab';
+        
+        // Mouse events
+        carouselWrapper.addEventListener('mousedown', dragStart);
+        carouselWrapper.addEventListener('mousemove', dragMove);
+        carouselWrapper.addEventListener('mouseup', dragEnd);
+        carouselWrapper.addEventListener('mouseleave', dragEnd);
+        
+        // Touch events
+        carouselWrapper.addEventListener('touchstart', dragStart, { passive: false });
+        carouselWrapper.addEventListener('touchmove', dragMove, { passive: false });
+        carouselWrapper.addEventListener('touchend', dragEnd);
+    }
+
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') prevSlide();
         if (e.key === 'ArrowRight') nextSlide();
     });
 
+    // Auto-play functionality (optional)
+    let autoplayInterval;
+    
+    function startAutoplay() {
+        autoplayInterval = setInterval(nextSlide, 5000); // 5 seconds
+    }
+    
+    function stopAutoplay() {
+        clearInterval(autoplayInterval);
+    }
+    
+    // Start autoplay and pause on hover
+    if (carouselWrapper) {
+        startAutoplay();
+        carouselWrapper.addEventListener('mouseenter', stopAutoplay);
+        carouselWrapper.addEventListener('mouseleave', startAutoplay);
+        carouselWrapper.addEventListener('touchstart', stopAutoplay);
+    }
+
     // Initialize carousel
-    updateCarousel();
+    updateCarousel(false);
 
     // Contact Modal functionality - FIXED
     const modal = document.getElementById('contactModal');
