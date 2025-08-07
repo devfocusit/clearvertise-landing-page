@@ -47,11 +47,41 @@ body {
     padding: 0.75rem 0;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-symbol {
+    height: 42px;
+    width: auto;
+    transition: all 0.3s ease;
+    opacity: 1;
+}
+
+.logo-symbol-white {
+    height: 42px;
+    width: auto;
+    transition: all 0.3s ease;
+    opacity: 0;
+    position: absolute;
+}
+
+.header.scrolled .logo-symbol {
+    opacity: 0;
+}
+
+.header.scrolled .logo-symbol-white {
+    opacity: 1;
+}
+
 .logo h2 {
     color: #fff;
     font-weight: 700;
     font-size: 1.5rem;
     transition: all 0.3s ease;
+    margin: 0;
 }
 
 .header.scrolled .logo h2 {
@@ -1104,6 +1134,7 @@ body {
     align-items: center;
     gap: 2rem;
     min-height: 500px;
+    isolation: isolate;
 }
 
 .carousel-wrapper {
@@ -1115,6 +1146,8 @@ body {
     cursor: grab;
     user-select: none;
     touch-action: pan-y pinch-zoom;
+    isolation: isolate;
+    z-index: 1;
 }
 
 .carousel-wrapper:active {
@@ -1153,6 +1186,8 @@ body {
     flex-direction: column;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     backdrop-filter: blur(10px);
+    z-index: 0;
+    position: relative;
 }
 
 .preview-card:hover {
@@ -1376,6 +1411,42 @@ body {
         order: 3;
         margin-top: 1rem;
     }
+}
+
+/* Progress Image Styling */
+.progress-image {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.progress-image img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    display: block;
+}
+
+/* Ensure carousel slides maintain proper containment */
+.carousel-slide .toolkit-card {
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* Ensure carousel wrapper maintains proper boundaries */
+.carousel-wrapper {
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Prevent content overflow in carousel slides */
+.carousel-slide {
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 /* Clickable Image Effects */
