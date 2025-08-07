@@ -448,13 +448,13 @@ body {
 
 .feature-card {
     text-align: center;
-    padding: 2rem;
-    transition: transform 0.3s ease;
+    padding: 1rem;
     background: transparent;
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
+    transition: transform 0.3s ease;
 }
 
 .feature-icon {
@@ -462,26 +462,34 @@ body {
 }
 
 .icon-bg {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
-    color: white;
     margin: 0 auto;
+    background: transparent;
+    border: 2px solid #1890FF;
+    color: #1890FF;
 }
 
 .icon-bg.blue { 
-    background: #1890FF;
+    border: 2px solid #1890FF;
+    color: #1890FF;
+    background: rgba(24, 144, 255, 0.05);
 }
 .icon-bg.purple { 
-    background: linear-gradient(135deg, #1890FF, #8b5cf6);
+    border: 2px solid #8b5cf6;
+    color: #8b5cf6;
+    background: rgba(139, 92, 246, 0.05);
 }
 .icon-bg.orange { 
-    background: linear-gradient(135deg, #1890FF, #f59e0b);
+    border: 2px solid #f59e0b;
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.05);
 }
 
 .feature-card h3 {
