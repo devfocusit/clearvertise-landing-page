@@ -719,6 +719,72 @@ body {
     z-index: 2;
 }
 
+/* Budget Planning Section */
+.budget-planning-section {
+    padding: 100px 0;
+    background: #fff;
+}
+
+.budget-planning-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.budget-planning-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+}
+
+.budget-planning-content p {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.budget-list {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.budget-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #1e293b;
+}
+
+.budget-bullet {
+    color: #1890FF;
+    font-weight: 700;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.budget-planning-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.budget-mockup {
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+}
+
+.budget-screen-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
 /* Why Choose Section */
 .why-choose {
     padding: 100px 0;
@@ -1309,6 +1375,106 @@ body {
     .carousel-pagination {
         order: 3;
         margin-top: 1rem;
+    }
+}
+
+/* Clickable Image Effects */
+.clickable-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2) !important;
+}
+
+/* Image Modal Styles */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+.image-modal-content {
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    animation: zoomIn 0.3s ease;
+}
+
+.image-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10001;
+    transition: opacity 0.3s ease;
+}
+
+.image-modal-close:hover {
+    opacity: 0.7;
+}
+
+.image-modal-caption {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Mobile responsive for image modal */
+@media (max-width: 768px) {
+    .image-modal-close {
+        font-size: 30px;
+        top: 10px;
+        right: 20px;
+    }
+    
+    .image-modal-caption {
+        font-size: 16px;
+        margin-top: 15px;
+    }
+    
+    .modal-image {
+        max-height: 70vh;
     }
 }
 

@@ -273,6 +273,40 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize carousel
     updateCarousel(false);
 
+    // Image Modal functionality
+    window.openImageModal = function(src, alt) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const caption = document.getElementById('imageCaption');
+        
+        if (modal && modalImage && caption) {
+            modal.style.display = 'block';
+            modalImage.src = src;
+            modalImage.alt = alt;
+            caption.textContent = alt;
+            
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    window.closeImageModal = function() {
+        const modal = document.getElementById('imageModal');
+        if (modal) {
+            modal.style.display = 'none';
+            
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+        }
+    };
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeImageModal();
+        }
+    });
+
     // Contact Modal functionality - FIXED
     const modal = document.getElementById('contactModal');
     const contactForm = document.getElementById('contactForm');

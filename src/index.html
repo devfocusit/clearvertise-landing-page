@@ -391,14 +391,16 @@
                 <div class="solution-wrapper">
                     <div class="solution-image">
                         <div class="solution-mockup">
-                            <div class="solution-shape"></div>
-                            <div class="solution-screen"></div>
+                            <img src="screens/mediaPlan1.png" alt="ClearVertise Media Planning Interface" 
+                            class="solution-screen-img clickable-image" 
+                            style="max-width: 110%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                            onclick="openImageModal(this.src, this.alt)">
                         </div>
                     </div>
                     <div class="solution-content">
-                        <h2>Perfect Solution Thriving Online Business</h2>
+                        <h2>Perfect Solution To Control Your Media Plans</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet et dolore magna aliquam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum lorem ipsum dolor sit amet.</p>
-                        <a href="#" class="btn-outline">Discover More</a>
+                        <!-- <a href="#" class="btn-outline">Discover More</a> -->
                     </div>
                 </div>
             </div>
@@ -409,29 +411,54 @@
             <div class="container">
                 <div class="features-detail-wrapper">
                     <div class="features-detail-content">
-                        <h2>Easy to Use with Tons of Awesome Features</h2>
+                        <h2>Advanced Dashboard with deep Insights</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet et dolore magna aliquam erat, sed diam voluptua.</p>
                         <ul class="features-list">
                             <li>
                                 <span class="feature-bullet">•</span>
-                                <span>Quick Access</span>
+                                <span>Comprehensive overview</span>
                             </li>
                             <li>
                                 <span class="feature-bullet">•</span>
-                                <span>Easy to Manage</span>
+                                <span>Easy to Filter</span>
                             </li>
                             <li>
                                 <span class="feature-bullet">•</span>
-                                <span>24/7 Support</span>
+                                <span>All metrics at a glance</span>
                             </li>
                         </ul>
-                        <a href="#" class="btn-outline">Learn More</a>
+                        <!-- <a href="#" class="btn-outline">Learn More</a> -->
                     </div>
                     <div class="features-detail-image">
                         <div class="features-mockup">
-                            <div class="features-shape"></div>
-                            <div class="features-screen"></div>
+                            <img src="screens/dashboard1.gif" alt="ClearVertise Dashboard Features Demo" 
+                            class="features-screen-gif clickable-image" 
+                            style="max-width: 120%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                            onclick="openImageModal(this.src, this.alt)"
+                            loading="lazy">
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Budget Planning Section -->
+        <section class="budget-planning-section">
+            <div class="container">
+                <div class="budget-planning-wrapper">
+                    <div class="budget-planning-image">
+                        <div class="budget-mockup">
+                            <img src="screens/budget1.png" alt="ClearVertise Budget Planning Interface" 
+                            class="budget-screen-img clickable-image" 
+                            style="max-width: 120%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                            onclick="openImageModal(this.src, this.alt)"
+                            loading="lazy">
+                        </div>
+                    </div>
+                    <div class="budget-planning-content">
+                        <h2>Plan Your Budget Ahead</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet et dolore magna aliquam erat, sed diam voluptua.</p>
+                        <!-- <a href="#" class="btn-outline">Learn More</a> -->
                     </div>
                 </div>
             </div>
@@ -680,6 +707,15 @@
                     <button class="btn-primary" onclick="closeModal()">Close</button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <div class="image-modal-content">
+            <span class="image-modal-close" onclick="closeImageModal()">&times;</span>
+            <img id="modalImage" src="" alt="" class="modal-image">
+            <div class="image-modal-caption" id="imageCaption"></div>
         </div>
     </div>
 
