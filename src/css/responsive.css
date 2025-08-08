@@ -9,7 +9,7 @@
 }
 
 /* ===== MOBILE STYLES (320px and up) ===== */
-@media (max-width: 767px) {
+@media (max-width: 1080px) {
     .container {
         padding: 0 15px;
     }
@@ -99,6 +99,13 @@
         font-size: 1rem;
         line-height: 1.5;
         margin-bottom: 1.5rem;
+    }
+    
+    /* Hero buttons mobile alignment */
+    .hero-buttons {
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
     
     /* MOBILE IMAGE OPTIMIZATION */
@@ -232,12 +239,12 @@
     }
     
     .solution-image {
-        order: 1;
+        order: 2; /* Image below text on mobile */
         width: 100%;
     }
     
     .solution-content {
-        order: 2;
+        order: 1; /* Text above image on mobile */
         width: 100%;
         text-align: center;
     }
@@ -261,19 +268,19 @@
     
     .features-detail-wrapper {
         display: flex !important; /* Override grid layout */
-        flex-direction: column-reverse;
+        flex-direction: column;
         gap: 2rem;
         text-align: center;
         align-items: center;
     }
     
     .features-detail-image {
-        order: 1;
+        order: 2; /* Image below text on mobile */
         width: 100%;
     }
     
     .features-detail-content {
-        order: 2;
+        order: 1; /* Text above image on mobile */
         width: 100%;
         text-align: center;
     }
@@ -304,12 +311,12 @@
     }
     
     .budget-planning-image {
-        order: 1;
+        order: 2; /* Image below text on mobile */
         width: 100%;
     }
     
     .budget-planning-content {
-        order: 2;
+        order: 1; /* Text above image on mobile */
         width: 100%;
         text-align: center;
     }

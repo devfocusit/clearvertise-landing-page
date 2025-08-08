@@ -664,11 +664,6 @@
                 
                 <form id="contactForm" class="contact-form">
                     <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
                         <label for="email">Email Address *</label>
                         <input type="email" id="email" name="email" required>
                     </div>
@@ -679,22 +674,16 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="interest">What are you most interested in?</label>
-                        <select id="interest" name="interest">
-                            <option value="">Select an option</option>
-                            <option value="seo">SEO Tools</option>
-                            <option value="advertising">Advertising Management</option>
-                            <option value="analytics">Analytics & Reporting</option>
-                            <option value="content">Content Creation</option>
-                            <option value="local">Local Marketing</option>
-                            <option value="social">Social Media Management</option>
-                            <option value="all">Complete Platform</option>
-                        </select>
+                        <label>Customer Type</label>
+                        <div class="customer-type-switch">
+                            <input type="radio" id="individual" name="customerType" value="individual" checked>
+                            <input type="radio" id="agency" name="customerType" value="agency">
+                            <div class="switch-wrapper">
+                                <label for="individual" class="switch-option">Individual</label>
+                                <label for="agency" class="switch-option">Agency</label>
+                                <div class="switch-slider"></div>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="form-group">

@@ -574,6 +574,45 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Customer Type Switch functionality
+    const customerTypeInputs = document.querySelectorAll('input[name="customerType"]');
+    const switchSlider = document.querySelector('.switch-slider');
+    
+    if (customerTypeInputs.length > 0 && switchSlider) {
+        customerTypeInputs.forEach((input, index) => {
+            input.addEventListener('change', function() {
+                if (this.checked) {
+                    // Move slider based on selected option
+                    if (this.value === 'agency') {
+                        switchSlider.style.transform = 'translateX(100%)';
+                    } else {
+                        switchSlider.style.transform = 'translateX(0%)';
+                    }
+                    
+                    // Update text colors
+                    const options = document.querySelectorAll('.switch-option');
+                    options.forEach((option, optionIndex) => {
+                        if (optionIndex === index) {
+                            option.style.color = 'white';
+                        } else {
+                            option.style.color = '#64748b';
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Initialize with default selection (individual)
+        const defaultInput = document.querySelector('input[name="customerType"][value="individual"]');
+        if (defaultInput && defaultInput.checked) {
+            switchSlider.style.transform = 'translateX(0%)';
+            const firstOption = document.querySelector('.switch-option');
+            if (firstOption) {
+                firstOption.style.color = 'white';
+            }
+        }
+    }
+
     // Make functions available globally for testing
     window.closeModal = closeModal;
     window.openModal = openModal;
