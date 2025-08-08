@@ -15,6 +15,42 @@
     {
       "route": "/contact",
       "rewrite": "/contact.html"
+    },
+    {
+      "route": "/css/*",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/js/*",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/screens/*",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/logo/*",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/assets/*",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/*.html",
+      "headers": {
+        "Cache-Control": "public, max-age=300, must-revalidate"
+      }
     }
   ],
   "navigationFallback": {
@@ -29,7 +65,10 @@
     ".html": "text/html"
   },
   "globalHeaders": {
-    "Cache-Control": "public, max-age=31536000"
+    "Cache-Control": "public, max-age=300, must-revalidate",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "X-XSS-Protection": "1; mode=block"
   },
   "responseOverrides": {
     "404": {
