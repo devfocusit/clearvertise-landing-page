@@ -1,6 +1,6 @@
-# ClearVertise Landing Page
+# CLEARVERTISE Landing Page
 
-This project is a modern landing page for ClearVertise - Smart Advertising Solutions. It showcases the platform's features, interactive carousel components, real interface screenshots, and provides comprehensive information about advertising analytics and campaign management tools.
+This project is a modern landing page for Clearvertise - Smart Advertising Solutions. It showcases the platform's features, interactive carousel components, real interface screenshots, and provides comprehensive information about advertising analytics and campaign management tools.
 
 ## Project Structure
 
@@ -29,6 +29,8 @@ clearvertise-landing-page/
 │   └── assets/
 │       └── fonts/         # Font files
 ├── dist/                  # Built files (generated)
+├── build.js               # Cross-platform build script
+├── staticwebapp.config.json # Azure Static Web Apps configuration
 ├── package.json           # npm configuration
 └── README.md             # Project documentation
 ```
@@ -62,10 +64,27 @@ To get started with this project, follow these steps:
 
 - **`npm start`** - Start development server on port 3000
 - **`npm run dev`** - Start development server with file watching
-- **`npm run build`** - Build the project for production
+- **`npm run build`** - Build the project for production (cross-platform Node.js script)
 - **`npm run serve`** - Serve the built project on port 8080
 - **`npm run clean`** - Clean the dist directory
 - **`npm run rebuild`** - Clean and rebuild the project
+
+## Deployment
+
+This project is configured for deployment on Azure Static Web Apps with:
+
+- **Cross-platform build script** (`build.js`) that works on Windows, macOS, and Linux
+- **Azure Static Web Apps configuration** (`staticwebapp.config.json`) for routing and caching
+- **Optimized file structure** with all assets properly organized
+
+### Build Process
+The build script copies all source files to the `dist/` directory:
+- HTML pages (index, about, features, contact)
+- CSS stylesheets and responsive styles
+- JavaScript functionality and components  
+- Interface screenshots and animations
+- Logo files and brand assets
+- Font files and other assets
 
 ## Features
 

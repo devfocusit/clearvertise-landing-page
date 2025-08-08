@@ -6,11 +6,9 @@
   "scripts": {
     "start": "live-server src --port=3000 --open=/index.html",
     "dev": "live-server src --port=3000 --open=/index.html --watch=src",
-    "build": "npm run build:prepare && npm run build:copy",
-    "build:prepare": "if not exist dist mkdir dist",
-    "build:copy": "xcopy /E /I /Y src dist",
+    "build": "node build.js",
     "serve": "live-server dist --port=8080 --open=/index.html",
-    "clean": "if exist dist rmdir /S /Q dist",
+    "clean": "node -e \"const fs=require('fs'); if(fs.existsSync('dist')) fs.rmSync('dist',{recursive:true,force:true}); console.log('Cleaned dist directory')\"",
     "rebuild": "npm run clean && npm run build",
     "test": "echo 'Testing ClearVertise landing page functionality'",
     "lint": "echo 'Linting HTML, CSS, and JavaScript files'"
