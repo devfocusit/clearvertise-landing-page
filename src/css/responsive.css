@@ -9,7 +9,7 @@
 }
 
 /* ===== MOBILE STYLES (320px and up) ===== */
-@media (max-width: 767px) {
+@media (max-width: 1081px) {
     .container {
         padding: 0 15px;
     }
