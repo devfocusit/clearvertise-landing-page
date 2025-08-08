@@ -5,13 +5,13 @@ const path = require('path');
 console.log('Building ClearVertise Landing Page...');
 
 const srcDir = path.join(__dirname, 'src');
-const distDir = path.join(__dirname, 'dist');
+const buildDir = path.join(__dirname, 'build');
 
-// Clean and create dist directory
-if (fs.existsSync(distDir)) {
-    fs.rmSync(distDir, { recursive: true, force: true });
+// Clean and create build directory
+if (fs.existsSync(buildDir)) {
+    fs.rmSync(buildDir, { recursive: true, force: true });
 }
-fs.mkdirSync(distDir, { recursive: true });
+fs.mkdirSync(buildDir, { recursive: true });
 
 // Copy files recursively
 function copyRecursive(src, dest) {
@@ -38,12 +38,12 @@ function copyRecursive(src, dest) {
 }
 
 try {
-    copyRecursive(srcDir, distDir);
+    copyRecursive(srcDir, buildDir);
     console.log('✅ Build completed successfully!');
-    console.log(`📁 Files built to: ${distDir}`);
+    console.log(`📁 Files built to: ${buildDir}`);
     
     // List built files
-    const files = fs.readdirSync(distDir);
+    const files = fs.readdirSync(buildDir);
     console.log('📋 Built files:', files.join(', '));
     
 } catch (error) {

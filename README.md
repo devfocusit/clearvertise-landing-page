@@ -28,9 +28,10 @@ clearvertise-landing-page/
 │   │   └── logoSymbolWhite.png # White logo for dark backgrounds
 │   └── assets/
 │       └── fonts/         # Font files
-├── dist/                  # Built files (generated)
+├── build/                 # Built files (generated - for Azure Static Web Apps)
 ├── build.js               # Cross-platform build script
 ├── staticwebapp.config.json # Azure Static Web Apps configuration
+├── .gitignore             # Git ignore file
 ├── package.json           # npm configuration
 └── README.md             # Project documentation
 ```
@@ -66,7 +67,7 @@ To get started with this project, follow these steps:
 - **`npm run dev`** - Start development server with file watching
 - **`npm run build`** - Build the project for production (cross-platform Node.js script)
 - **`npm run serve`** - Serve the built project on port 8080
-- **`npm run clean`** - Clean the dist directory
+- **`npm run clean`** - Clean the build directory
 - **`npm run rebuild`** - Clean and rebuild the project
 
 ## Deployment
@@ -78,7 +79,7 @@ This project is configured for deployment on Azure Static Web Apps with:
 - **Optimized file structure** with all assets properly organized
 
 ### Build Process
-The build script copies all source files to the `dist/` directory:
+The build script copies all source files to the `build/` directory:
 - HTML pages (index, about, features, contact)
 - CSS stylesheets and responsive styles
 - JavaScript functionality and components  
