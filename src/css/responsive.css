@@ -9,7 +9,7 @@
 }
 
 /* ===== MOBILE STYLES (320px and up) ===== */
-@media (max-width: 1281px) {
+@media (max-width: 767px) {
     .container {
         padding: 0 15px;
     }
@@ -70,12 +70,16 @@
     }
     
     .hero-wrapper {
+        display: flex !important; /* Override grid layout */
         flex-direction: column;
         gap: 2rem;
+        align-items: center;
     }
     
     .hero-content {
         order: 1;
+        width: 100%;
+        text-align: center;
     }
     
     .hero-image {
@@ -220,17 +224,22 @@
     }
     
     .solution-wrapper {
+        display: flex !important; /* Override grid layout */
         flex-direction: column;
         gap: 2rem;
         text-align: center;
+        align-items: center;
     }
     
     .solution-image {
         order: 1;
+        width: 100%;
     }
     
     .solution-content {
         order: 2;
+        width: 100%;
+        text-align: center;
     }
     
     .solution-mockup {
@@ -251,17 +260,22 @@
     }
     
     .features-detail-wrapper {
+        display: flex !important; /* Override grid layout */
         flex-direction: column-reverse;
         gap: 2rem;
         text-align: center;
+        align-items: center;
     }
     
     .features-detail-image {
         order: 1;
+        width: 100%;
     }
     
     .features-detail-content {
         order: 2;
+        width: 100%;
+        text-align: center;
     }
     
     .features-mockup {
@@ -282,17 +296,22 @@
     }
     
     .budget-planning-wrapper {
+        display: flex !important; /* Override grid layout */
         flex-direction: column;
         gap: 2rem;
         text-align: center;
+        align-items: center;
     }
     
     .budget-planning-image {
         order: 1;
+        width: 100%;
     }
     
     .budget-planning-content {
         order: 2;
+        width: 100%;
+        text-align: center;
     }
     
     .budget-mockup {
