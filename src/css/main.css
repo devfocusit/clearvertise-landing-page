@@ -1449,6 +1449,61 @@ body {
     overflow: hidden;
 }
 
+/* Base image responsiveness */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Progressive image enhancement */
+img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+img[loading="lazy"].loaded {
+    opacity: 1;
+}
+
+/* Touch-friendly interactive elements */
+@media (max-width: 767px) {
+    .clickable-image:hover {
+        transform: none !important;
+    }
+    
+    .clickable-image:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    /* Ensure buttons are touch-friendly */
+    .btn-primary, .btn-signin, .btn-outline {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Mobile-optimized carousel */
+    .carousel-slide {
+        padding: 0 0.5rem;
+    }
+    
+    /* Better mobile spacing */
+    .hero, .features, .solution-section, 
+    .features-detail, .budget-planning-section, 
+    .why-choose, .cta-section {
+        padding: 60px 0;
+    }
+    
+    /* Mobile typography improvements */
+    h1, h2, h3 {
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+}
+
 /* Clickable Image Effects */
 .clickable-image:hover {
     transform: scale(1.02);

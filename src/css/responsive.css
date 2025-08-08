@@ -1,106 +1,483 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
+/* ===== MOBILE-FIRST RESPONSIVE DESIGN ===== */
 
+/* Base responsive container */
 .container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px;
 }
 
-.header, .footer {
-    text-align: center;
-    padding: 20px;
-}
-
-.main-content {
-    padding: 20px;
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
+/* ===== MOBILE STYLES (320px and up) ===== */
+@media (max-width: 767px) {
     .container {
-        padding: 10px;
+        padding: 0 15px;
     }
 
-    .header, .footer {
-        padding: 15px;
-    }
-
-    .main-content {
-        padding: 15px;
+    /* Header Mobile */
+    .header {
+        padding: 15px 0;
     }
     
     .navbar {
         flex-direction: column;
         gap: 1rem;
+        align-items: center;
+    }
+    
+    .logo h2 {
+        font-size: 1.2rem;
     }
     
     .nav-menu ul {
-        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 0.5rem 0;
+    }
+    
+    .nav-menu li a {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.5rem;
     }
     
     .nav-buttons {
         gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     
+    .btn-signin, .btn-primary {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* Hero Section Mobile */
     .hero {
-        padding: 100px 0 60px;
+        padding: 80px 0 40px;
+        text-align: center;
+    }
+    
+    .hero-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .hero-content {
+        order: 1;
+    }
+    
+    .hero-image {
+        order: 2;
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
     
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
     }
     
     .hero p {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
     }
     
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
+    /* MOBILE IMAGE OPTIMIZATION */
+    .main-dashboard-screen {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 8px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    /* Section Headers Mobile */
+    .section-header {
+        text-align: center;
+        margin-bottom: 2rem;
     }
     
     .section-header h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        line-height: 1.3;
+        margin-bottom: 0.8rem;
     }
     
+    .section-header p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    /* Features Grid Mobile */
     .features-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
     
-    .cta-content h2 {
-        font-size: 2rem;
+    .feature-card {
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    /* Carousel Mobile */
+    .toolkits-carousel {
+        padding: 60px 0;
     }
     
-    .container {
-        padding: 0 15px;
+    .toolkit-categories {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+    
+    .category-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+    
+    .carousel-container {
+        flex-direction: column;
+        gap: 1rem;
+        min-height: auto;
+    }
+    
+    .preview-card {
+        display: none; /* Hide preview cards on mobile */
+    }
+    
+    .carousel-wrapper {
+        max-width: 100%;
+        order: 1;
+        margin: 0 40px; /* Space for nav buttons */
+    }
+    
+    .carousel-nav-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(24, 144, 255, 0.2);
+    }
+    
+    .carousel-prev {
+        left: -25px;
+    }
+    
+    .carousel-next {
+        right: -25px;
+    }
+    
+    .toolkit-card {
+        padding: 1.5rem;
+        min-height: 350px;
+    }
+    
+    .card-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .card-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    /* Progress Image Mobile */
+    .progress-image {
+        margin: 0.5rem 0;
+    }
+    
+    .progress-image img {
+        max-width: 100% !important;
+        border-radius: 6px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Solution Section Mobile */
+    .solution-section {
+        padding: 60px 0;
+    }
+    
+    .solution-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .solution-image {
+        order: 1;
+    }
+    
+    .solution-content {
+        order: 2;
+    }
+    
+    .solution-mockup {
+        max-width: 100%;
+    }
+    
+    .solution-screen-img {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 8px !important;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+    }
+
+    /* Features Detail Mobile */
+    .features-detail {
+        padding: 60px 0;
+    }
+    
+    .features-detail-wrapper {
+        flex-direction: column-reverse;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .features-detail-image {
+        order: 1;
+    }
+    
+    .features-detail-content {
+        order: 2;
+    }
+    
+    .features-mockup {
+        max-width: 100%;
+    }
+    
+    .features-screen-gif {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 8px !important;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+    }
+
+    /* Budget Planning Mobile */
+    .budget-planning-section {
+        padding: 60px 0;
+    }
+    
+    .budget-planning-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .budget-planning-image {
+        order: 1;
+    }
+    
+    .budget-planning-content {
+        order: 2;
+    }
+    
+    .budget-mockup {
+        max-width: 100%;
+    }
+    
+    .budget-screen-img {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 8px !important;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+    }
+
+    /* Why Choose Mobile */
+    .why-choose {
+        padding: 60px 0;
+    }
+    
+    .why-choose-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 400px;
+    }
+    
+    .why-choose-item {
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    /* CTA Section Mobile */
+    .cta-section {
+        padding: 60px 0;
+        text-align: center;
+    }
+    
+    .cta-content h2 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+    }
+    
+    .cta-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Modal Mobile */
+    .modal-content {
+        width: 95%;
+        max-width: 400px;
+        margin: 5% auto;
+        padding: 1rem;
+    }
+    
+    .contact-form .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .btn-submit, .btn-cancel {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    /* Image Modal Mobile */
+    .image-modal-content {
+        padding: 10px;
+        width: 95%;
+    }
+    
+    .modal-image {
+        max-height: 70vh !important;
+        border-radius: 6px;
+    }
+    
+    .image-modal-close {
+        top: 15px;
+        right: 15px;
+        font-size: 2rem;
     }
 }
 
-@media (max-width: 480px) {
-    .header h1 {
-        font-size: 24px;
-    }
-
-    .footer p {
-        font-size: 14px;
+/* ===== SMALL MOBILE STYLES (320px - 479px) ===== */
+@media (max-width: 479px) {
+    .container {
+        padding: 0 10px;
     }
     
     .hero h1 {
-        font-size: 2rem;
+        font-size: 1.75rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.6rem;
     }
     
     .btn-large {
-        padding: 0.875rem 1.5rem;
-        font-size: 1rem;
+        padding: 0.75rem 1.25rem;
+        font-size: 0.95rem;
     }
     
-    .dashboard-mockup {
-        height: 250px;
+    .toolkit-card {
+        padding: 1.25rem;
+        min-height: 320px;
+    }
+    
+    .carousel-wrapper {
+        margin: 0 35px;
+    }
+    
+    .carousel-nav-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .carousel-prev {
+        left: -20px;
+    }
+    
+    .carousel-next {
+        right: -20px;
+    }
+    
+    /* Extra small image optimization */
+    .main-dashboard-screen,
+    .solution-screen-img,
+    .features-screen-gif,
+    .budget-screen-img,
+    .progress-image img {
+        border-radius: 6px !important;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.12) !important;
+    }
+}
+
+/* ===== TABLET STYLES (768px - 1023px) ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        padding: 0 30px;
+    }
+    
+    .hero-wrapper {
+        gap: 3rem;
+    }
+    
+    .main-dashboard-screen {
+        max-width: 500px !important;
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .why-choose-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+    
+    .carousel-container {
+        gap: 1.5rem;
+    }
+    
+    .preview-card {
+        width: 200px;
+        height: 300px;
+        padding: 1.25rem;
+    }
+    
+    .solution-screen-img,
+    .features-screen-gif,
+    .budget-screen-img {
+        max-width: 90% !important;
+    }
+}
+
+/* ===== LARGE SCREENS (1024px and up) ===== */
+@media (min-width: 1024px) {
+    /* Ensure images don't get too large on very wide screens */
+    .main-dashboard-screen {
+        max-width: 700px;
+    }
+    
+    .solution-screen-img {
+        max-width: 110%;
+    }
+    
+    .features-screen-gif {
+        max-width: 120%;
+    }
+    
+    .budget-screen-img {
+        max-width: 120%;
     }
 }

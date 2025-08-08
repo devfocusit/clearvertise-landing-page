@@ -1,5 +1,84 @@
 // This file contains the main JavaScript functionality for the landing page, handling interactions and dynamic content.
 
+// Mobile optimization and image loading enhancements
+(function() {
+    'use strict';
+    
+    // Optimize images for mobile devices
+    function optimizeImagesForMobile() {
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        
+        // Intersection Observer for lazy loading
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+        });
+        
+        images.forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+    
+    // Improve touch interactions on mobile
+    function enhanceMobileInteractions() {
+        // Add touch-friendly classes for mobile devices
+        if (window.innerWidth <= 767) {
+            document.body.classList.add('mobile-device');
+            
+            // Optimize carousel for touch
+            const carouselWrapper = document.querySelector('.carousel-wrapper');
+            if (carouselWrapper) {
+                carouselWrapper.style.touchAction = 'pan-x';
+            }
+            
+            // Reduce motion for better performance on mobile
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (prefersReducedMotion) {
+                document.body.classList.add('reduce-motion');
+            }
+        }
+    }
+    
+    // Responsive image sizing based on device
+    function adjustImageSizes() {
+        const screenWidth = window.innerWidth;
+        const images = document.querySelectorAll('.main-dashboard-screen, .solution-screen-img, .features-screen-gif, .budget-screen-img');
+        
+        images.forEach(img => {
+            if (screenWidth <= 479) {
+                // Small mobile
+                img.style.maxWidth = '100%';
+                img.style.borderRadius = '6px';
+            } else if (screenWidth <= 767) {
+                // Mobile
+                img.style.maxWidth = '100%';
+                img.style.borderRadius = '8px';
+            }
+        });
+    }
+    
+    // Initialize mobile optimizations
+    document.addEventListener('DOMContentLoaded', function() {
+        optimizeImagesForMobile();
+        enhanceMobileInteractions();
+        adjustImageSizes();
+    });
+    
+    // Re-adjust on window resize
+    window.addEventListener('resize', function() {
+        adjustImageSizes();
+    });
+    
+})();
+
 document.addEventListener('DOMContentLoaded', function() {
     // Navigation functionality with scroll detection
     const header = document.querySelector('.header');
