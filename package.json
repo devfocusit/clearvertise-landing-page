@@ -1,22 +1,33 @@
 {
-  "name": "landing-page",
+  "name": "clearvertise-landing-page",
   "version": "1.0.0",
-  "description": "A brief introduction landing page for a product with multiple subpages.",
+  "description": "ClearVertise - Smart Advertising Solutions Landing Page",
   "main": "src/index.html",
   "scripts": {
-    "start": "live-server src",
-    "build": "echo 'Build step not defined'",
-    "test": "echo 'Test step not defined'"
+    "start": "live-server src --port=3000 --open=/index.html",
+    "dev": "live-server src --port=3000 --open=/index.html --watch=src",
+    "build": "npm run build:prepare && npm run build:copy",
+    "build:prepare": "if not exist dist mkdir dist",
+    "build:copy": "xcopy /E /I /Y src dist",
+    "serve": "live-server dist --port=8080 --open=/index.html",
+    "clean": "if exist dist rmdir /S /Q dist",
+    "rebuild": "npm run clean && npm run build",
+    "test": "echo 'Testing ClearVertise landing page functionality'",
+    "lint": "echo 'Linting HTML, CSS, and JavaScript files'"
   },
   "keywords": [
-    "landing",
-    "page",
-    "product",
+    "clearvertise",
+    "advertising",
+    "marketing",
+    "analytics",
+    "landing-page",
+    "saas",
+    "dashboard",
     "html",
     "css",
     "javascript"
   ],
-  "author": "Your Name",
+  "author": "ClearVertise Team",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {

@@ -1,25 +1,35 @@
-# Landing Page Project
+# ClearVertise Landing Page
 
-This project is a simple landing page for showcasing a product. It includes multiple subpages to provide users with detailed information about the product, its features, and a way to contact for inquiries.
+This project is a modern landing page for ClearVertise - Smart Advertising Solutions. It showcases the platform's features, interactive carousel components, real interface screenshots, and provides comprehensive information about advertising analytics and campaign management tools.
 
 ## Project Structure
 
 ```
-landing-page
-├── src
-│   ├── index.html        # Main landing page
-│   ├── about.html       # About the product
-│   ├── features.html    # Product features
-│   ├── contact.html      # Contact information
-│   ├── css
-│   │   ├── main.css      # Main styles
-│   │   └── responsive.css # Responsive styles
-│   ├── js
-│   │   ├── main.js       # Main JavaScript functionality
+clearvertise-landing-page/
+├── src/
+│   ├── index.html          # Main landing page
+│   ├── about.html         # About page
+│   ├── features.html      # Product features page  
+│   ├── contact.html       # Contact information page
+│   ├── css/
+│   │   ├── main.css       # Main styles and components
+│   │   └── responsive.css # Responsive design styles
+│   ├── js/
+│   │   ├── main.js        # Main JavaScript functionality
 │   │   └── components.js  # Reusable JavaScript components
-│   └── assets
-│       └── fonts         # Font files
-├── package.json          # npm configuration file
+│   ├── screens/           # Interface screenshots
+│   │   ├── dashboard1.png # Main dashboard screenshot
+│   │   ├── dashboard1.gif # Dashboard animation
+│   │   ├── progress1.png  # Progress analytics interface
+│   │   ├── mediaPlan1.png # Media planning interface
+│   │   └── budget1.png    # Budget planning interface
+│   ├── logo/              # Brand logos
+│   │   ├── logoSymbol.png # Default logo
+│   │   └── logoSymbolWhite.png # White logo for dark backgrounds
+│   └── assets/
+│       └── fonts/         # Font files
+├── dist/                  # Built files (generated)
+├── package.json           # npm configuration
 └── README.md             # Project documentation
 ```
 
@@ -28,28 +38,70 @@ landing-page
 To get started with this project, follow these steps:
 
 1. **Clone the repository**:
-   ```
+   ```bash
    git clone <repository-url>
    ```
 
 2. **Navigate to the project directory**:
-   ```
-   cd landing-page
+   ```bash
+   cd clearvertise-landing-page
    ```
 
 3. **Install dependencies**:
-   ```
+   ```bash
    npm install
    ```
 
-4. **Open the landing page**:
-   Open `src/index.html` in your web browser to view the landing page.
+4. **Start development server**:
+   ```bash
+   npm start
+   ```
+   This will open the landing page at `http://localhost:3000`
+
+## Available Scripts
+
+- **`npm start`** - Start development server on port 3000
+- **`npm run dev`** - Start development server with file watching
+- **`npm run build`** - Build the project for production
+- **`npm run serve`** - Serve the built project on port 8080
+- **`npm run clean`** - Clean the dist directory
+- **`npm run rebuild`** - Clean and rebuild the project
 
 ## Features
 
-- **Responsive Design**: The landing page and its subpages are designed to be responsive, ensuring a good user experience on various devices.
-- **Dynamic Content**: JavaScript is used to handle interactions and dynamic content across the pages.
-- **Informative Subpages**: Each subpage provides specific information about the product, making it easy for users to understand its value.
+- **Interactive Carousel**: Advanced toolkit carousel with preview cards and smooth transitions
+- **Real Interface Screenshots**: Actual ClearVertise dashboard and analytics interfaces
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Dynamic Header**: Logo switching and button contrast based on scroll state  
+- **Image Modals**: Clickable interface screenshots with full-screen preview
+- **Contact Forms**: Interactive contact modal with form validation
+- **Modern UI Components**: Clean design with smooth animations and hover effects
+- **SEO Optimized**: Proper meta tags, favicon, and semantic HTML structure
+
+## Key Components
+
+### Interactive Toolkits Carousel
+- **Control Progress**: Real progress analytics interface with traffic metrics
+- **SEO Tools**: Comprehensive SEO audit and optimization features
+- **Content Creation**: AI-powered content generation with real-time scoring
+- **Local Marketing**: Google Business Profile performance tracking
+- **AI Features**: Smart campaign optimization and predictive analytics
+- **Social Media**: Multi-platform social media management
+- **Advertising**: Cross-platform ad management with ROI optimization
+
+### Interface Screenshots
+- Dashboard analytics with comprehensive metrics display
+- Media planning interface for campaign management
+- Budget planning tools with financial tracking
+- Progress analytics with traffic source analysis
+
+## Technologies Used
+
+- **HTML5**: Semantic markup and accessibility features
+- **CSS3**: Flexbox/Grid layouts, custom properties, animations
+- **Vanilla JavaScript**: ES6+ features, DOM manipulation, event handling
+- **Inter Font**: Modern typography via Google Fonts
+- **Responsive Images**: Optimized loading with lazy loading support
 
 ## Contributing
 
