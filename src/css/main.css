@@ -780,7 +780,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
     padding: 2rem 0;
 }
 
@@ -789,6 +789,7 @@ body {
     padding: 1.5rem;
     border-radius: 12px;
     border-left: 4px solid #1890FF;
+    margin-bottom: 0;
 }
 
 .benefit-section h3 {
@@ -949,6 +950,83 @@ body {
 }
 
 .feature-section p {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+/* Customisable Settings Section */
+.customisable-settings-section {
+    padding: 100px 0;
+    background: #fff;
+}
+
+.customisable-settings-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.customisable-settings-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+}
+
+.customisable-settings-content p {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.customisable-settings-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-mockup {
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+}
+
+.settings-screen-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Customisable Settings Features */
+.customisable-settings-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding: 2rem 0;
+}
+
+.settings-feature-section {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #1890FF;
+    margin-bottom: 0;
+}
+
+.settings-feature-section h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+}
+
+.settings-feature-section p {
     font-size: 0.95rem;
     color: #64748b;
     line-height: 1.5;
