@@ -846,8 +846,11 @@ body {
 
 /* Media Plan Features */
 .media-plan-features {
-    margin-top: 2rem;
-    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding: 2rem 0;
 }
 
 .feature-section {
@@ -855,7 +858,7 @@ body {
     padding: 1.5rem;
     border-radius: 12px;
     border-left: 4px solid #1890FF;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
 }
 
 .feature-section:last-child {
