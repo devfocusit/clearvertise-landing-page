@@ -844,6 +844,82 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
+/* Campaign Insights Section */
+.campaign-insights-section {
+    padding: 100px 0;
+    background: #f8fafc;
+}
+
+.campaign-insights-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.campaign-insights-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+}
+
+.campaign-insights-content p {
+    font-size: 1.1rem;
+    color: #64748b;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.campaign-insights-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding: 2rem 0;
+}
+
+.insight-section {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #1890FF;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.insight-section h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+}
+
+.insight-section p {
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.campaign-insights-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.insights-mockup {
+    position: relative;
+    max-width: 500px;
+    width: 100%;
+}
+
+.insights-screen-img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
 /* Media Plan Features */
 .media-plan-features {
     display: grid;
