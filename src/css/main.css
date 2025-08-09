@@ -776,6 +776,35 @@ body {
     line-height: 1.6;
 }
 
+.budget-benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding: 2rem 0;
+}
+
+.benefit-section {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #1890FF;
+}
+
+.benefit-section h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+}
+
+.benefit-section p {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
 .budget-list {
     list-style: none;
     margin-bottom: 2rem;

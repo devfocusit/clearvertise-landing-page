@@ -333,6 +333,26 @@
         box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
     }
 
+        /* Budget Benefits Mobile */
+    .budget-benefits {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        padding: 1.5rem 0;
+    }
+    
+    .benefit-section {
+        padding: 1.25rem;
+    }
+    
+    .benefit-section h3 {
+        font-size: 1rem;
+    }
+    
+    .benefit-section p {
+        font-size: 0.9rem;
+    }
+    
     /* Why Choose Mobile */
     .why-choose {
         padding: 60px 0;
