@@ -955,7 +955,7 @@ body {
 /* Media Plan Features */
 .media-plan-features {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin-top: 3rem;
     padding: 2rem 0;
@@ -990,7 +990,7 @@ body {
 /* Customisable Settings Section */
 .customisable-settings-section {
     padding: 100px 0;
-    background: #fff;
+    background: #f8fafc;
 }
 
 .customisable-settings-wrapper {
@@ -1043,7 +1043,7 @@ body {
 }
 
 .settings-feature-section {
-    background: #f8fafc;
+    background: #fff;
     padding: 1.5rem;
     border-radius: 12px;
     border-left: 4px solid #1890FF;
