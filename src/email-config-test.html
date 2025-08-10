@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FormSubmit Email Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; }
+        .form-container { background: #f9f9f9; padding: 30px; border-radius: 8px; border: 2px solid #007bff; }
+        button { background: #007bff; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        button:hover { background: #0056b3; }
+        input, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 4px; font-size: 14px; }
+        textarea { height: 120px; resize: vertical; }
+        .instructions { background: #e7f3ff; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
+        .warning { background: #fff3cd; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #ffc107; }
+    </style>
+</head>
+<body>
+    <h1>🧪 FormSubmit Email Configuration Test</h1>
+    
+    <div class="instructions">
+        <h3>📋 Instructions:</h3>
+        <p>This form will submit to the <code>el/fuhiha</code> endpoint and show you a success page. The email recipient is whoever configured this endpoint originally.</p>
+        <p><strong>After submitting:</strong> Check if YOU receive an email. If not, then this endpoint is configured for someone else's email.</p>
+    </div>
+
+    <div class="form-container">
+        <h2>Test Form for el/fuhiha Endpoint</h2>
+        
+        <form action="https://formsubmit.co/el/fuhiha" method="POST" target="_blank">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="🧪 EMAIL CONFIGURATION TEST - Please Check Who Receives This">
+            <input type="hidden" name="_next" value="https://formsubmit.co/thanks">
+            
+            <label><strong>Your Name:</strong></label>
+            <input type="text" name="name" value="Email Test User" required>
+            
+            <label><strong>Your Email Address:</strong></label>
+            <input type="email" name="email" placeholder="Enter YOUR actual email address" required>
+            
+            <label><strong>Test Message:</strong></label>
+            <textarea name="message" required>
+🧪 EMAIL CONFIGURATION TEST
+
+This is a test to determine which email address receives messages from the el/fuhiha endpoint.
+
+If YOU are receiving this email, then the endpoint is configured correctly for your email address.
+
+If someone ELSE receives this email, then the endpoint is configured for their email address and needs to be changed.
+
+Test submitted from: [YOUR DOMAIN]
+Date: [TODAY'S DATE]
+            </textarea>
+            
+            <button type="submit">🚀 Submit Test (Opens New Window)</button>
+        </form>
+    </div>
+
+    <div class="warning">
+        <h3>⚠️ What to Expect:</h3>
+        <ul>
+            <li><strong>New window opens</strong> with FormSubmit success page</li>
+            <li><strong>Wait 2-5 minutes</strong> for email delivery</li>
+            <li><strong>Check your email</strong> (including spam folder)</li>
+            <li><strong>If you DON'T get the email:</strong> The endpoint is configured for someone else</li>
+        </ul>
+    </div>
+
+    <div class="instructions">
+        <h3>🔧 Next Steps:</h3>
+        <p><strong>If you receive the email:</strong> Great! Your contact form should work. Check your spam folder for previous submissions.</p>
+        <p><strong>If you DON'T receive the email:</strong> We need to either:</p>
+        <ul>
+            <li>Find out who set up the <code>el/fuhiha</code> endpoint</li>
+            <li>Create a new FormSubmit endpoint with your email</li>
+            <li>Update your contact form to use your direct email address</li>
+        </ul>
+    </div>
+
+    <script>
+        // Add current date to the form
+        window.addEventListener('load', function() {
+            const textarea = document.querySelector('textarea[name="message"]');
+            const currentDate = new Date().toLocaleDateString();
+            const currentDomain = window.location.hostname;
+            
+            textarea.value = textarea.value
+                .replace('[YOUR DOMAIN]', currentDomain)
+                .replace('[TODAY\'S DATE]', currentDate);
+        });
+    </script>
+</body>
+</html>
