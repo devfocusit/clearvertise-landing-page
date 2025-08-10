@@ -1048,52 +1048,61 @@ body {
 }
 
 .why-choose-item {
-    text-align: center;
-    padding: 1rem;
-    background: transparent;
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .why-choose-item:hover {
-    transform: translateY(-5px);
-    transition: transform 0.3s ease;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    border-color: rgba(24, 144, 255, 0.2);
 }
 
 .why-choose-icon {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .icon-simple {
-    width: 70px;
-    height: 70px;
-    border-radius: 15px;
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin: 0 auto;
-    background: transparent;
-    border: 2px solid #1890FF;
-    color: #1890FF;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: #1890FF;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
 }
 
 .icon-simple.blue {
-    border: 2px solid #1890FF;
-    color: #1890FF;
-    background: rgba(24, 144, 255, 0.05);
+    background: #1890FF;
+    color: white;
 }
 
 .why-choose-item h3 {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 1rem;
     color: #1e293b;
+    line-height: 1.4;
 }
 
 .why-choose-item p {
     color: #64748b;
-    line-height: 1.6;
+    line-height: 1.7;
     font-size: 0.95rem;
+    flex-grow: 1;
 }
 
 /* Pricing Section */
