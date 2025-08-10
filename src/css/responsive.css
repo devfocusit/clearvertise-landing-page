@@ -184,6 +184,18 @@
         text-align: center;
     }
 
+    /* Features Detail Features Mobile */
+    .features-detail-features {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        padding: 1.5rem 0;
+    }
+    
+    .feature-detail-section {
+        padding: 1.25rem;
+    }
+
     /* Carousel Mobile */
     .toolkits-carousel {
         padding: 60px 0;
@@ -629,6 +641,11 @@
     }
     
     .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .features-detail-features {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
     }
