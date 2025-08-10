@@ -470,6 +470,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (submitBtn) {
                     submitBtn.textContent = 'Send Request';
                     submitBtn.disabled = false;
+                    submitBtn.style.backgroundColor = '';
                 }
             }
             if (successMessage) {
@@ -528,8 +529,67 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Note: Form submission is handled naturally by FormSubmit
-    // No JavaScript intervention needed for basic form submission
+    // Form submission handling with success message
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = document.querySelector('.btn-submit');
+            const formData = new FormData(contactForm);
+            
+            // Show loading state
+            if (submitBtn) {
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+            }
+            
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors' // FormSubmit requires no-cors mode
+                });
+                
+                // FormSubmit always returns a successful response with no-cors
+                // So we show success message after a short delay
+                setTimeout(() => {
+                    // Hide form and show success message
+                    if (contactForm) {
+                        contactForm.style.display = 'none';
+                    }
+                    if (successMessage) {
+                        successMessage.style.display = 'block';
+                    }
+                    
+                    // Reset submit button for next time
+                    if (submitBtn) {
+                        submitBtn.textContent = 'Send Request';
+                        submitBtn.disabled = false;
+                    }
+                }, 500);
+                
+            } catch (error) {
+                console.error('Form submission error:', error);
+                
+                // Show error state
+                if (submitBtn) {
+                    submitBtn.textContent = 'Error - Try Again';
+                    submitBtn.disabled = false;
+                    submitBtn.style.backgroundColor = '#ef4444';
+                }
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    if (submitBtn) {
+                        submitBtn.textContent = 'Send Request';
+                        submitBtn.style.backgroundColor = '';
+                    }
+                }, 3000);
+            }
+        });
+    }
+
+    // Note: Form submission is now handled with AJAX and success message display
 
     // Pricing toggle functionality
     const toggleLabels = document.querySelectorAll('.toggle-label');
