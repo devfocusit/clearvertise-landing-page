@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-// Cross-platform build script for ClearVertise Landing Page
-console.log('Building ClearVertise Landing Page...');
+// Cross-platform build script for Clearvertise Landing Page
+console.log('Building Clearvertise Landing Page...');
 
 const srcDir = path.join(__dirname, 'src');
 const buildDir = path.join(__dirname, 'build');

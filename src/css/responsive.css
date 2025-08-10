@@ -208,6 +208,18 @@
         padding: 1.25rem;
     }
 
+    /* Customisable Settings Features Mobile */
+    .customisable-settings-features {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        padding: 1.5rem 0;
+    }
+    
+    .settings-feature-section {
+        padding: 1.25rem;
+    }
+
     /* Carousel Mobile */
     .toolkits-carousel {
         padding: 60px 0;

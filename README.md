@@ -1,11 +1,11 @@
-# CLEARVERTISE Landing Page
+# Clearvertise Landing Page
 
 This project is a modern landing page for Clearvertise - Smart Advertising Solutions. It showcases the platform's features, interactive carousel components, real interface screenshots, and provides comprehensive information about advertising analytics and campaign management tools.
 
 ## Project Structure
 
 ```
-clearvertise-landing-page/
+Clearvertise-landing-page/
 ├── src/
 │   ├── index.html          # Main landing page
 │   ├── about.html         # About page
@@ -47,7 +47,7 @@ To get started with this project, follow these steps:
 
 2. **Navigate to the project directory**:
    ```bash
-   cd clearvertise-landing-page
+   cd Clearvertise-landing-page
    ```
 
 3. **Install dependencies**:
@@ -90,7 +90,7 @@ The build script copies all source files to the `build/` directory:
 ## Features
 
 - **Interactive Carousel**: Advanced toolkit carousel with preview cards and smooth transitions
-- **Real Interface Screenshots**: Actual ClearVertise dashboard and analytics interfaces
+- **Real Interface Screenshots**: Actual Clearvertise dashboard and analytics interfaces
 - **Mobile-First Responsive Design**: Fully optimized for smartphones, tablets, and desktop devices
 - **Progressive Image Loading**: Lazy loading with intersection observer for optimal performance
 - **Touch-Optimized Interface**: Mobile-friendly interactions and touch gestures

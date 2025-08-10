@@ -1,4 +1,4 @@
-# Cache Busting for ClearVertise Landing Page
+# Cache Busting for Clearvertise Landing Page
 
 ## Problem
 After deployment, browsers and CDNs cache CSS/JS files, causing updated styles not to appear even when the code is updated.

@@ -1,7 +1,7 @@
 {
-  "name": "clearvertise-landing-page",
+  "name": "Clearvertise-landing-page",
   "version": "1.0.0",
-  "description": "ClearVertise - Smart Advertising Solutions Landing Page",
+  "description": "Clearvertise - Smart Advertising Solutions Landing Page",
   "main": "src/index.html",
   "scripts": {
     "start": "live-server src --port=3000 --open=/index.html",
@@ -12,11 +12,11 @@
     "rebuild": "npm run clean && npm run build",
     "bump-version": "powershell -ExecutionPolicy Bypass -File bump-version.ps1",
     "deploy-prep": "npm run bump-version && echo 'Ready for deployment - commit and push changes'",
-    "test": "echo 'Testing ClearVertise landing page functionality'",
+    "test": "echo 'Testing Clearvertise landing page functionality'",
     "lint": "echo 'Linting HTML, CSS, and JavaScript files'"
   },
   "keywords": [
-    "clearvertise",
+    "Clearvertise",
     "advertising",
     "marketing",
     "analytics",
@@ -27,7 +27,7 @@
     "css",
     "javascript"
   ],
-  "author": "ClearVertise Team",
+  "author": "Clearvertise Team",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
