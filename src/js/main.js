@@ -459,6 +459,22 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             document.body.classList.remove('modal-open');
             modal.style.display = 'none';
+            
+            // Reset modal state for next time
+            if (contactForm) {
+                contactForm.style.display = 'block';
+                contactForm.reset();
+                
+                // Reset submit button state
+                const submitBtn = document.querySelector('.btn-submit');
+                if (submitBtn) {
+                    submitBtn.textContent = 'Send Request';
+                    submitBtn.disabled = false;
+                }
+            }
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
         }, 300);
     }
 
@@ -512,40 +528,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Handle form submission
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Show loading state
-            const submitBtn = document.querySelector('.btn-submit');
-            if (submitBtn) {
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'Sending...';
-                submitBtn.disabled = true;
-                
-                // Get form data
-                const formData = new FormData(contactForm);
-                const data = Object.fromEntries(formData);
-                
-                // Simulate form submission delay
-                setTimeout(() => {
-                    // Reset button
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    
-                    // Log form data (in real app, you'd send to your backend)
-                    console.log('Form submitted:', data);
-                    
-                    // Show success message
-                    contactForm.style.display = 'none';
-                    if (successMessage) {
-                        successMessage.style.display = 'block';
-                    }
-                }, 1500);
-            }
-        });
-    }
+    // Note: Form submission is handled naturally by FormSubmit
+    // No JavaScript intervention needed for basic form submission
 
     // Pricing toggle functionality
     const toggleLabels = document.querySelectorAll('.toggle-label');
