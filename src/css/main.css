@@ -592,8 +592,26 @@ body {
     text-align: center;
 }
 
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 .footer p {
     color: #94a3b8;
+    margin: 0;
+}
+
+.footer-contact a {
+    color: #1890ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+    color: #40a9ff;
+    text-decoration: underline;
 }
 
 /* Solution Section */
@@ -2221,11 +2239,6 @@ body.modal-open .footer {
 .form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.5rem;
-}
-
-.form-group:last-child {
-    margin-bottom: 0;
 }
 
 .form-group label {
