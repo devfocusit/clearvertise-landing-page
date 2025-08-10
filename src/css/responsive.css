@@ -10,8 +10,47 @@
 
 /* ===== MOBILE STYLES (320px and up) ===== */
 @media (max-width: 1080px) {
+    /* Prevent horizontal overflow on mobile */
+    body {
+        overflow-x: hidden !important;
+    }
+    
+    * {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
     .container {
         padding: 0 15px;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Ensure all sections and image containers stay within viewport */
+    section, 
+    .hero-wrapper,
+    .features-detail-wrapper,
+    .budget-planning-wrapper,
+    .campaign-insights-wrapper,
+    .solution-wrapper,
+    .customisable-settings-wrapper,
+    .why-choose-grid {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    /* Ensure all image containers don't overflow */
+    .hero-image,
+    .features-mockup,
+    .budget-mockup,
+    .insights-mockup,
+    .solution-mockup,
+    .settings-mockup {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
     }
 
     /* Header Mobile */
@@ -326,6 +365,78 @@
     }
     
     .budget-screen-img {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 8px !important;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+    }
+
+    /* Campaign Insights Mobile */
+    .campaign-insights-section {
+        padding: 60px 0;
+    }
+    
+    .campaign-insights-wrapper {
+        display: flex !important;
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .campaign-insights-image {
+        order: 2;
+        width: 100%;
+    }
+    
+    .campaign-insights-content {
+        order: 1;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .insights-mockup {
+        max-width: 100%;
+    }
+    
+    .insights-screen-img {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 8px !important;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+    }
+
+    /* Customisable Settings Mobile */
+    .customisable-settings-section {
+        padding: 60px 0;
+    }
+    
+    .customisable-settings-wrapper {
+        display: flex !important;
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .customisable-settings-image {
+        order: 2;
+        width: 100%;
+    }
+    
+    .customisable-settings-content {
+        order: 1;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .settings-mockup {
+        max-width: 100%;
+    }
+    
+    .settings-screen-img {
         max-width: 100% !important;
         width: 100% !important;
         height: auto !important;
