@@ -3,11 +3,11 @@
 // Mobile optimization and image loading enhancements
 (function() {
     'use strict';
-    
+
     // Optimize images for mobile devices
     function optimizeImagesForMobile() {
         const images = document.querySelectorAll('img[loading="lazy"]');
-        
+
         // Intersection Observer for lazy loading
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -21,24 +21,24 @@
             rootMargin: '50px 0px',
             threshold: 0.01
         });
-        
+
         images.forEach(img => {
             imageObserver.observe(img);
         });
     }
-    
+
     // Improve touch interactions on mobile
     function enhanceMobileInteractions() {
         // Add touch-friendly classes for mobile devices
         if (window.innerWidth <= 767) {
             document.body.classList.add('mobile-device');
-            
+
             // Optimize carousel for touch
             const carouselWrapper = document.querySelector('.carousel-wrapper');
             if (carouselWrapper) {
                 carouselWrapper.style.touchAction = 'pan-x';
             }
-            
+
             // Reduce motion for better performance on mobile
             const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             if (prefersReducedMotion) {
@@ -46,12 +46,12 @@
             }
         }
     }
-    
+
     // Responsive image sizing based on device
     function adjustImageSizes() {
         const screenWidth = window.innerWidth;
         const images = document.querySelectorAll('.main-dashboard-screen, .solution-screen-img, .features-screen-gif, .budget-screen-img');
-        
+
         images.forEach(img => {
             if (screenWidth <= 479) {
                 // Small mobile
@@ -64,19 +64,19 @@
             }
         });
     }
-    
+
     // Initialize mobile optimizations
     document.addEventListener('DOMContentLoaded', function() {
         optimizeImagesForMobile();
         enhanceMobileInteractions();
         adjustImageSizes();
     });
-    
+
     // Re-adjust on window resize
     window.addEventListener('resize', function() {
         adjustImageSizes();
     });
-    
+
 })();
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
             const sectionId = section.getAttribute('id');
-            
+
             if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                 navLinks.forEach(link => {
                     link.classList.remove('active');
@@ -126,11 +126,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextCard = document.querySelector('.next-card');
     const carouselWrapper = document.querySelector('.carousel-wrapper');
     const paginationDots = document.querySelectorAll('.pagination-dot');
-    
+
     let currentSlide = 0;
     const totalSlides = carouselSlides.length;
     let isTransitioning = false;
-    
+
     // Touch/drag functionality
     let startX = 0;
     let currentX = 0;
@@ -150,17 +150,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateCarousel(animate = true) {
         if (!carouselTrack) return;
-        
+
         // Prevent multiple transitions
         if (isTransitioning && animate) return;
-        
+
         if (animate) {
             isTransitioning = true;
             carouselTrack.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
         } else {
             carouselTrack.style.transition = 'none';
         }
-        
+
         // Update main carousel position
         const translateX = -currentSlide * 100;
         carouselTrack.style.transform = `translateX(${translateX}%)`;
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const prevCardIcon = prevCard.querySelector('.card-icon');
             const prevCardTitle = prevCard.querySelector('h3');
             const prevCardContent = prevCard.querySelector('.preview-content');
-            
+
             if (prevCardIcon) prevCardIcon.textContent = prevData.icon;
             if (prevCardTitle) prevCardTitle.textContent = prevData.title;
             if (prevCardContent) prevCardContent.textContent = prevData.content;
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const nextCardIcon = nextCard.querySelector('.card-icon');
             const nextCardTitle = nextCard.querySelector('h3');
             const nextCardContent = nextCard.querySelector('.preview-content');
-            
+
             if (nextCardIcon) nextCardIcon.textContent = nextData.icon;
             if (nextCardTitle) nextCardTitle.textContent = nextData.title;
             if (nextCardContent) nextCardContent.textContent = nextData.content;
@@ -236,48 +236,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function dragStart(e) {
         if (isTransitioning) return;
-        
+
         isDragging = true;
         startX = getPositionX(e);
         initialTranslate = -currentSlide * 100;
-        
+
         carouselTrack.style.transition = 'none';
         carouselWrapper.style.cursor = 'grabbing';
-        
+
         // Prevent default to avoid text selection
         e.preventDefault();
     }
 
     function dragMove(e) {
         if (!isDragging || isTransitioning) return;
-        
+
         currentX = getPositionX(e);
         const diffX = currentX - startX;
         const dragPercentage = (diffX / carouselWrapper.offsetWidth) * 100;
         const newTranslate = initialTranslate + dragPercentage;
-        
+
         // Add resistance at boundaries
         let finalTranslate = newTranslate;
         const maxTranslate = -(totalSlides - 1) * 100;
-        
+
         if (newTranslate > 0) {
             finalTranslate = newTranslate * 0.3; // Resistance at start
         } else if (newTranslate < maxTranslate) {
             finalTranslate = maxTranslate + (newTranslate - maxTranslate) * 0.3; // Resistance at end
         }
-        
+
         carouselTrack.style.transform = `translateX(${finalTranslate}%)`;
     }
 
     function dragEnd() {
         if (!isDragging) return;
-        
+
         isDragging = false;
         carouselWrapper.style.cursor = 'grab';
-        
+
         const diffX = currentX - startX;
         const threshold = carouselWrapper.offsetWidth * 0.2; // 20% threshold
-        
+
         if (Math.abs(diffX) > threshold) {
             if (diffX > 0 && currentSlide > 0) {
                 prevSlide();
@@ -311,13 +311,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Touch events
     if (carouselWrapper) {
         carouselWrapper.style.cursor = 'grab';
-        
+
         // Mouse events
         carouselWrapper.addEventListener('mousedown', dragStart);
         carouselWrapper.addEventListener('mousemove', dragMove);
         carouselWrapper.addEventListener('mouseup', dragEnd);
         carouselWrapper.addEventListener('mouseleave', dragEnd);
-        
+
         // Touch events
         carouselWrapper.addEventListener('touchstart', dragStart, { passive: false });
         carouselWrapper.addEventListener('touchmove', dragMove, { passive: false });
@@ -332,15 +332,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Auto-play functionality (optional)
     let autoplayInterval;
-    
+
     function startAutoplay() {
         autoplayInterval = setInterval(nextSlide, 10000); // 10 seconds
     }
-    
+
     function stopAutoplay() {
         clearInterval(autoplayInterval);
     }
-    
+
     // Start autoplay and pause on hover
     if (carouselWrapper) {
         startAutoplay();
@@ -357,13 +357,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const modal = document.getElementById('imageModal');
         const modalImage = document.getElementById('modalImage');
         const caption = document.getElementById('imageCaption');
-        
+
         if (modal && modalImage && caption) {
             modal.style.display = 'block';
             modalImage.src = src;
             modalImage.alt = alt;
             caption.textContent = alt;
-            
+
             // Prevent body scroll when modal is open
             document.body.style.overflow = 'hidden';
         }
@@ -373,7 +373,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const modal = document.getElementById('imageModal');
         if (modal) {
             modal.style.display = 'none';
-            
+
             // Restore body scroll
             document.body.style.overflow = 'auto';
         }
@@ -407,12 +407,12 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Modal element not found!');
             return;
         }
-        
+
         console.log('Opening modal...');
-        
+
         // Prevent page scroll and add blur effect to body
         document.body.classList.add('modal-open');
-        
+
         // Show modal with flex display and center positioning
         modal.style.display = 'flex';
         modal.style.position = 'fixed';
@@ -423,12 +423,12 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.zIndex = '999999';
         modal.style.alignItems = 'center';
         modal.style.justifyContent = 'center';
-        
+
         // Add show class for animations
         setTimeout(() => {
             modal.classList.add('show');
         }, 10);
-        
+
         // Reset form and show form, hide success message
         if (contactForm) {
             contactForm.style.display = 'block';
@@ -437,7 +437,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (successMessage) {
             successMessage.style.display = 'none';
         }
-        
+
         // Focus on first input
         setTimeout(() => {
             const nameInput = document.getElementById('name');
@@ -449,28 +449,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function closeModal() {
         if (!modal) return;
-        
+
         console.log('Closing modal...');
-        
+
         // Remove show class for exit animation
         modal.classList.remove('show');
-        
+
         // Remove body blur and restore scroll after animation
         setTimeout(() => {
             document.body.classList.remove('modal-open');
             modal.style.display = 'none';
-            
+
             // Reset modal state for next time
             if (contactForm) {
                 contactForm.style.display = 'block';
                 contactForm.reset();
-                
+
                 // Reset submit button state
                 const submitBtn = document.querySelector('.btn-submit');
                 if (submitBtn) {
                     submitBtn.textContent = 'Send Request';
                     submitBtn.disabled = false;
-                    submitBtn.style.backgroundColor = '';
+
                 }
             }
             if (successMessage) {
@@ -481,7 +481,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Get all "Get Started" buttons
     const getStartedBtns = document.querySelectorAll('.btn-primary');
-    
+
     console.log('Get Started buttons found:', getStartedBtns.length);
 
     // Open modal when clicking "Get Started" buttons
@@ -505,7 +505,7 @@ document.addEventListener('DOMContentLoaded', function() {
             closeModal();
         });
     }
-    
+
     if (cancelBtn) {
         cancelBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -529,45 +529,67 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Set dynamic redirect URL for FormSubmit
-    function setFormRedirectURL() {
-        const nextInput = document.querySelector('input[name="_next"]');
-        if (nextInput) {
-            const currentURL = window.location.origin + window.location.pathname;
-            nextInput.value = currentURL + '?success=true';
-        }
-    }
+    // Note: Form submission is handled naturally by FormSubmit
+    // No JavaScript intervention needed for basic form submission
 
-    // Check for success parameter on page load
-    function checkForSuccess() {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('success') === 'true') {
-            // Show modal with success message
-            if (modal) {
-                openModal();
-                
-                // Hide form and show success message
-                setTimeout(() => {
-                    if (contactForm) {
-                        contactForm.style.display = 'none';
-                    }
-                    if (successMessage) {
-                        successMessage.style.display = 'block';
-                    }
-                }, 100);
-            }
-            
-            // Clean up URL by removing the success parameter
-            const newUrl = window.location.origin + window.location.pathname;
-            window.history.replaceState({}, document.title, newUrl);
-        }
-    }
-    
-    // Initialize form redirect URL and check for success
-    setFormRedirectURL();
-    checkForSuccess();
 
-    // Note: Form submission is handled naturally by FormSubmit with dynamic redirect
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Pricing toggle functionality
     const toggleLabels = document.querySelectorAll('.toggle-label');
@@ -579,14 +601,14 @@ document.addEventListener('DOMContentLoaded', function() {
             toggleLabels.forEach(l => l.classList.remove('active'));
             // Add active class to clicked label
             label.classList.add('active');
-            
+
             const period = label.dataset.period;
-            
+
             // Update all prices
             prices.forEach(price => {
                 const monthlyPrice = price.dataset.monthly;
                 const yearlyPrice = price.dataset.yearly;
-                
+
                 if (period === 'monthly') {
                     price.textContent = monthlyPrice;
                 } else {
@@ -599,7 +621,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Customer Type Switch functionality
     const customerTypeInputs = document.querySelectorAll('input[name="customerType"]');
     const switchSlider = document.querySelector('.switch-slider');
-    
+
     if (customerTypeInputs.length > 0 && switchSlider) {
         customerTypeInputs.forEach((input, index) => {
             input.addEventListener('change', function() {
@@ -610,7 +632,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else {
                         switchSlider.style.transform = 'translateX(0%)';
                     }
-                    
+
                     // Update text colors
                     const options = document.querySelectorAll('.switch-option');
                     options.forEach((option, optionIndex) => {
@@ -623,7 +645,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         });
-        
+
         // Initialize with default selection (individual)
         const defaultInput = document.querySelector('input[name="customerType"][value="individual"]');
         if (defaultInput && defaultInput.checked) {
