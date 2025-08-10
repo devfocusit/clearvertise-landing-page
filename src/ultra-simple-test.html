@@ -52,17 +52,53 @@
                        window.location.hostname === '';
         document.getElementById('isLocal').textContent = isLocal ? 'YES - This might be the problem!' : 'NO';
         
-        // Log form submissions
+        // Add submission status tracking
+        let submissionStatus = document.createElement('div');
+        submissionStatus.id = 'submissionStatus';
+        submissionStatus.style.cssText = 'margin-top: 20px; padding: 10px; border: 1px solid #ccc; background: #f9f9f9;';
+        submissionStatus.innerHTML = '<h3>Submission Status:</h3><p>No submissions yet...</p>';
+        document.body.appendChild(submissionStatus);
+        
+        // Log form submissions with detailed tracking
         document.querySelectorAll('form').forEach((form, index) => {
             form.addEventListener('submit', function(e) {
-                console.log(`Form ${index + 1} submitted!`);
+                const timestamp = new Date().toLocaleTimeString();
+                console.log(`Form ${index + 1} submitted at ${timestamp}!`);
                 console.log('Action:', this.action);
                 console.log('Method:', this.method);
                 console.log('Target:', this.target);
                 console.log('Current URL:', window.location.href);
                 console.log('Is Local?', isLocal);
+                
+                // Update status display
+                const statusEl = document.getElementById('submissionStatus');
+                statusEl.innerHTML += `
+                    <p><strong>${timestamp}:</strong> Form ${index + 1} submitted to ${this.action}</p>
+                    <p>Target: ${this.target || 'same window'}</p>
+                `;
+                
+                // For forms that don't open in new window, show redirect warning
+                if (!this.target || this.target === '_self') {
+                    statusEl.innerHTML += `<p style="color: orange;">⚠️ This form will redirect the current page</p>`;
+                }
             });
         });
+        
+        // Add a test for checking if FormSubmit endpoint is reachable
+        async function testFormSubmitEndpoint() {
+            try {
+                const response = await fetch('https://formsubmit.co/el/fuhiha', {
+                    method: 'GET',
+                    mode: 'no-cors'
+                });
+                console.log('FormSubmit endpoint test - Response received (no-cors mode)');
+            } catch (error) {
+                console.error('FormSubmit endpoint test failed:', error);
+            }
+        }
+        
+        // Test endpoint on page load
+        testFormSubmitEndpoint();
     </script>
 </body>
 </html>
