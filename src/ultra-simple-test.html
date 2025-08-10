@@ -7,8 +7,9 @@
     <h1>Ultra Simple Test</h1>
     
     <!-- Test 1: Absolute minimal form -->
-    <h2>Test 1: Minimal Form</h2>
+    <h2>Test 1: Minimal Form (No Captcha)</h2>
     <form action="https://formsubmit.co/el/fuhiha" method="POST">
+        <input type="hidden" name="_captcha" value="false">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <textarea name="message" placeholder="Your Message" required></textarea>
@@ -18,8 +19,9 @@
     <hr>
     
     <!-- Test 2: Form that opens in new window -->
-    <h2>Test 2: New Window Form</h2>
+    <h2>Test 2: New Window Form (No Captcha)</h2>
     <form action="https://formsubmit.co/el/fuhiha" method="POST" target="_blank">
+        <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_subject" value="Test 2 from New Window">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
