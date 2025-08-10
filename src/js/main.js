@@ -529,67 +529,45 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Form submission handling with success message
-    if (contactForm) {
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const submitBtn = document.querySelector('.btn-submit');
-            const formData = new FormData(contactForm);
-            
-            // Show loading state
-            if (submitBtn) {
-                submitBtn.textContent = 'Sending...';
-                submitBtn.disabled = true;
-            }
-            
-            try {
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'no-cors' // FormSubmit requires no-cors mode
-                });
+    // Set dynamic redirect URL for FormSubmit
+    function setFormRedirectURL() {
+        const nextInput = document.querySelector('input[name="_next"]');
+        if (nextInput) {
+            const currentURL = window.location.origin + window.location.pathname;
+            nextInput.value = currentURL + '?success=true';
+        }
+    }
+
+    // Check for success parameter on page load
+    function checkForSuccess() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            // Show modal with success message
+            if (modal) {
+                openModal();
                 
-                // FormSubmit always returns a successful response with no-cors
-                // So we show success message after a short delay
+                // Hide form and show success message
                 setTimeout(() => {
-                    // Hide form and show success message
                     if (contactForm) {
                         contactForm.style.display = 'none';
                     }
                     if (successMessage) {
                         successMessage.style.display = 'block';
                     }
-                    
-                    // Reset submit button for next time
-                    if (submitBtn) {
-                        submitBtn.textContent = 'Send Request';
-                        submitBtn.disabled = false;
-                    }
-                }, 500);
-                
-            } catch (error) {
-                console.error('Form submission error:', error);
-                
-                // Show error state
-                if (submitBtn) {
-                    submitBtn.textContent = 'Error - Try Again';
-                    submitBtn.disabled = false;
-                    submitBtn.style.backgroundColor = '#ef4444';
-                }
-                
-                // Reset button after 3 seconds
-                setTimeout(() => {
-                    if (submitBtn) {
-                        submitBtn.textContent = 'Send Request';
-                        submitBtn.style.backgroundColor = '';
-                    }
-                }, 3000);
+                }, 100);
             }
-        });
+            
+            // Clean up URL by removing the success parameter
+            const newUrl = window.location.origin + window.location.pathname;
+            window.history.replaceState({}, document.title, newUrl);
+        }
     }
+    
+    // Initialize form redirect URL and check for success
+    setFormRedirectURL();
+    checkForSuccess();
 
-    // Note: Form submission is now handled with AJAX and success message display
+    // Note: Form submission is handled naturally by FormSubmit with dynamic redirect
 
     // Pricing toggle functionality
     const toggleLabels = document.querySelectorAll('.toggle-label');
