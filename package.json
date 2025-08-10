@@ -10,6 +10,8 @@
     "serve": "live-server build --port=8080 --open=/index.html",
     "clean": "node -e \"const fs=require('fs'); if(fs.existsSync('build')) fs.rmSync('build',{recursive:true,force:true}); console.log('Cleaned build directory')\"",
     "rebuild": "npm run clean && npm run build",
+    "bump-version": "powershell -ExecutionPolicy Bypass -File bump-version.ps1",
+    "deploy-prep": "npm run bump-version && echo 'Ready for deployment - commit and push changes'",
     "test": "echo 'Testing ClearVertise landing page functionality'",
     "lint": "echo 'Linting HTML, CSS, and JavaScript files'"
   },

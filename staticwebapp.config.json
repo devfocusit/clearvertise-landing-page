@@ -19,13 +19,13 @@
     {
       "route": "/css/*",
       "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
+        "Cache-Control": "public, max-age=3600, must-revalidate"
       }
     },
     {
-      "route": "/js/*",
+      "route": "/js/*", 
       "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
+        "Cache-Control": "public, max-age=3600, must-revalidate"
       }
     },
     {
