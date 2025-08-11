@@ -533,8 +533,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function setFormRedirectURL() {
         const nextInput = document.querySelector('input[name="_next"]');
         if (nextInput) {
+            // For direct email usage, set redirect to current domain
             const currentURL = window.location.origin + window.location.pathname;
             nextInput.value = currentURL + '?success=true';
+            console.log('FormSubmit redirect URL set to:', nextInput.value);
         }
     }
 
