@@ -237,6 +237,8 @@ body {
     background: linear-gradient(135deg, #4A90E2 0%, #1890FF 50%, #0066CC 100%);
     color: white;
     overflow: hidden;
+    padding-top: 120px; /* Add padding to account for fixed header */
+    box-sizing: border-box;
 }
 
 .hero-shape {

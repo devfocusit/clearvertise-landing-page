@@ -662,6 +662,10 @@
         padding: 0 30px;
     }
     
+    .hero {
+        padding-top: 110px; /* Ensure proper spacing on tablets */
+    }
+    
     .hero-wrapper {
         gap: 3rem;
     }
