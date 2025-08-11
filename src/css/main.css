@@ -2282,39 +2282,41 @@ img[loading="lazy"].loaded {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.4);
     border: none;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 55px;
     cursor: pointer;
     z-index: 1002;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    opacity: 0.7;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    opacity: 0.9;
+    backdrop-filter: blur(10px);
 }
 
 .modal-nav-btn:hover {
-    background: rgba(255, 255, 255, 0.4);
-    transform: translateY(-50%) scale(1.1);
+    background: rgba(255, 255, 255, 0.7);
+    transform: translateY(-50%) scale(1.15);
     opacity: 1;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
 .modal-nav-btn svg {
-    width: 20px;
-    height: 20px;
-    color: white;
+    width: 22px;
+    height: 22px;
+    color: rgba(0, 0, 0, 0.8);
 }
 
 .modal-prev-btn {
-    left: 30px;
+    left: 40px;
 }
 
 .modal-next-btn {
-    right: 30px;
+    right: 40px;
 }
 
 /* Modal Indicators */
