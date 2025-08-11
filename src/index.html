@@ -785,14 +785,14 @@
                 <span class="close-modal">&times;</span>
             </div>
             <div class="modal-body">
-                <p>Leave your email and our team will contact you with detailed information about how Clearvertise can transform your advertising strategy.</p>
+                <p id="modalDescription">Leave your email and our team will contact you with detailed information about how Clearvertise can transform your advertising strategy.</p>
 
                 <form id="contactForm" class="contact-form" action="https://formsubmit.co/info@clearvertise.com" method="POST">
                     <!-- FormSubmit Configuration -->
                     <input type="hidden" name="_subject" value="New Contact Form Submission from Clearvertise">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_next" value="">
-                    <input type="hidden" name="_url" value="https://clearvertise.com/contact.html">
+                    <input type="hidden" name="_url" value="https://clearvertise.com/index.html">
                     <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_autoresponse" value="Thank you for contacting Clearvertise! We'll get back to you shortly.">
                     
@@ -809,6 +809,24 @@
                     <div class="form-group">
                         <label for="company">Company Name</label>
                         <input type="text" id="company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customer-type">Customer Type *</label>
+                        <div class="customer-type-selector">
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="customer_type" value="Individual" id="individual" checked>
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-label">Individual</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="customer_type" value="Agency" id="agency">
+                                    <span class="radio-custom"></span>
+                                    <span class="radio-label">Agency</span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="form-group">

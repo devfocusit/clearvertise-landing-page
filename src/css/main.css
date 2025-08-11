@@ -2233,18 +2233,19 @@ body.modal-open .footer {
 
 .contact-form {
     display: grid;
-    gap: 1.5rem;
+    gap: 2.5rem;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
+    margin-bottom: 1rem;
 }
 
 .form-group label {
     color: #374151;
     font-weight: 500;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0rem;
     font-size: 0.9rem;
 }
 
@@ -2270,6 +2271,74 @@ body.modal-open .footer {
 .form-group textarea {
     resize: vertical;
     min-height: 100px;
+}
+
+/* Customer Type Selector Styling */
+.customer-type-selector {
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.radio-group {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: #374151;
+    transition: color 0.3s ease;
+}
+
+.radio-option:hover {
+    color: #1890FF;
+}
+
+.radio-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d1d5db;
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom {
+    border-color: #1890FF;
+    background-color: #1890FF;
+}
+
+.radio-option input[type="radio"]:checked + .radio-custom:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.radio-option input[type="radio"]:focus + .radio-custom {
+    box-shadow: 0 0 0 3px rgba(24, 144, 255, 0.1);
+}
+
+.radio-label {
+    font-weight: 500;
+    user-select: none;
 }
 
 .form-actions {

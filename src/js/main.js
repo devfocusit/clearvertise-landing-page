@@ -410,6 +410,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
         console.log('Opening modal...');
 
+        // Reset modal content to original state (in case it was showing success message)
+        const modalHeader = document.querySelector('.modal-header h2');
+        const modalDescription = document.getElementById('modalDescription');
+        
+        if (modalHeader) {
+            modalHeader.textContent = 'Get Started with Clearvertise';
+        }
+        
+        if (modalDescription) {
+            modalDescription.style.display = 'block';
+        }
+        
+        if (contactForm) {
+            contactForm.style.display = 'block';
+        }
+        
+        if (successMessage) {
+            successMessage.style.display = 'none';
+        }
+
         // Prevent page scroll and add blur effect to body
         document.body.classList.add('modal-open');
 
@@ -550,9 +570,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Hide form and show success message
                 setTimeout(() => {
+                    // Hide the form
                     if (contactForm) {
                         contactForm.style.display = 'none';
                     }
+                    
+                    // Hide the initial description
+                    const modalDescription = document.getElementById('modalDescription');
+                    if (modalDescription) {
+                        modalDescription.style.display = 'none';
+                    }
+                    
+                    // Update modal header for success
+                    const modalHeader = document.querySelector('.modal-header h2');
+                    if (modalHeader) {
+                        modalHeader.textContent = 'Request Submitted Successfully!';
+                    }
+                    
+                    // Show success message
                     if (successMessage) {
                         successMessage.style.display = 'block';
                     }
