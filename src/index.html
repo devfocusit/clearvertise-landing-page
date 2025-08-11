@@ -63,16 +63,58 @@
             </div>
         </section>
 
-  <!-- Solution Section -->
         <section id="features" class="solution-section">
             <div class="container">
                 <div class="solution-wrapper">
                     <div class="solution-image">
                         <div class="solution-mockup">
-                            <img src="screens/mediaPlan1.png" alt="Clearvertise Media Planning Interface" 
-                            class="solution-screen-img clickable-image" 
-                            style="max-width: 110%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-                            onclick="openImageModal(this.src, this.alt)">
+                            <!-- Image Carousel Container -->
+                            <div class="solution-carousel-container">
+                                <!-- Previous Button -->
+                                <button class="solution-carousel-btn solution-carousel-prev" aria-label="Previous Image">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                
+                                <!-- Image Track -->
+                                <div class="solution-carousel-track">
+                                    <div class="solution-carousel-slide active">
+                                        <img src="screens/mediaPlan1.png" alt="Clearvertise Media Planning Interface" 
+                                        class="solution-screen-img clickable-image" 
+                                        style="max-width: 110%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                                        onclick="openImageModal(this.src, this.alt)">
+                                    </div>
+                                    <div class="solution-carousel-slide">
+                                        <img src="screens/campaigns1.png" alt="Clearvertise Campaigns Overview" 
+                                        class="solution-screen-img clickable-image" 
+                                        style="max-width: 110%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                                        onclick="openImageModal(this.src, this.alt)"
+                                        loading="lazy">
+                                    </div>
+                                    <div class="solution-carousel-slide">
+                                        <img src="screens/progress1.png" alt="Clearvertise Progress Tracking" 
+                                        class="solution-screen-img clickable-image" 
+                                        style="max-width: 110%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                                        onclick="openImageModal(this.src, this.alt)"
+                                        loading="lazy">
+                                    </div>
+                                </div>
+                                
+                                <!-- Next Button -->
+                                <button class="solution-carousel-btn solution-carousel-next" aria-label="Next Image">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <!-- Carousel Indicators -->
+                            <div class="solution-carousel-indicators">
+                                <button class="solution-indicator active" data-slide="0"></button>
+                                <button class="solution-indicator" data-slide="1"></button>
+                                <button class="solution-indicator" data-slide="2"></button>
+                            </div>
                         </div>
                     </div>
                      <div class="solution-content">
@@ -119,11 +161,62 @@
                     </div>
                     <div class="features-detail-image">
                         <div class="features-mockup">
-                            <img src="screens/dashboard1.gif" alt="Clearvertise Dashboard Features Demo" 
-                            class="features-screen-gif clickable-image" 
-                            style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-                            onclick="openImageModal(this.src, this.alt)"
-                            loading="lazy">
+                            <!-- Image Carousel Container -->
+                            <div class="features-carousel-container">
+                                <!-- Previous Button -->
+                                <button class="features-carousel-btn features-carousel-prev" aria-label="Previous Image">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                
+                                <!-- Image Track -->
+                                <div class="features-carousel-track">
+                                    <div class="features-carousel-slide active">
+                                        <img src="screens/dashboard1.gif" alt="Clearvertise Dashboard Features Demo" 
+                                        class="features-screen-gif clickable-image" 
+                                        style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                                        onclick="openImageModal(this.src, this.alt)"
+                                        loading="lazy">
+                                    </div>
+                                    <div class="features-carousel-slide">
+                                        <img src="screens/mediaPlan1.png" alt="Clearvertise Media Planning Interface" 
+                                        class="features-screen-gif clickable-image" 
+                                        style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                                        onclick="openImageModal(this.src, this.alt)"
+                                        loading="lazy">
+                                    </div>
+                                    <div class="features-carousel-slide">
+                                        <img src="screens/budget1.png" alt="Clearvertise Budget Planning Interface" 
+                                        class="features-screen-gif clickable-image" 
+                                        style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                                        onclick="openImageModal(this.src, this.alt)"
+                                        loading="lazy">
+                                    </div>
+                                    <div class="features-carousel-slide">
+                                        <img src="screens/settings1.png" alt="Clearvertise Settings Interface" 
+                                        class="features-screen-gif clickable-image" 
+                                        style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                                        onclick="openImageModal(this.src, this.alt)"
+                                        loading="lazy">
+                                    </div>
+                                </div>
+                                
+                                <!-- Next Button -->
+                                <button class="features-carousel-btn features-carousel-next" aria-label="Next Image">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <!-- Carousel Indicators -->
+                            <div class="features-carousel-indicators">
+                                <button class="features-indicator active" data-slide="0"></button>
+                                <button class="features-indicator" data-slide="1"></button>
+                                <button class="features-indicator" data-slide="2"></button>
+                                <button class="features-indicator" data-slide="3"></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -149,17 +242,51 @@
 
         
         
-          <!-- Budget Planning Section -->
         <section class="budget-planning-section">
             <div class="container">
                 <div class="budget-planning-wrapper">
                     <div class="budget-planning-image">
                         <div class="budget-mockup">
-                            <img src="screens/budget1.png" alt="Clearvertise Budget Planning Interface" 
-                            class="budget-screen-img clickable-image" 
-                            style="max-width: 120%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-                            onclick="openImageModal(this.src, this.alt)"
-                            loading="lazy">
+                            <!-- Image Carousel Container -->
+                            <div class="budget-carousel-container">
+                                <!-- Previous Button -->
+                                <button class="budget-carousel-btn budget-carousel-prev" aria-label="Previous Image">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                
+                                <!-- Image Track -->
+                                <div class="budget-carousel-track">
+                                    <div class="budget-carousel-slide active">
+                                        <img src="screens/budget1.png" alt="Clearvertise Budget Planning Interface" 
+                                        class="budget-screen-img clickable-image" 
+                                        style="max-width: 120%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                                        onclick="openImageModal(this.src, this.alt)"
+                                        loading="lazy">
+                                    </div>
+                                    <div class="budget-carousel-slide">
+                                        <img src="screens/budgetTile1.png" alt="Clearvertise Budget Tile View" 
+                                        class="budget-screen-img clickable-image" 
+                                        style="max-width: 120%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                                        onclick="openImageModal(this.src, this.alt)"
+                                        loading="lazy">
+                                    </div>
+                                </div>
+                                
+                                <!-- Next Button -->
+                                <button class="budget-carousel-btn budget-carousel-next" aria-label="Next Image">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <!-- Carousel Indicators -->
+                            <div class="budget-carousel-indicators">
+                                <button class="budget-indicator active" data-slide="0"></button>
+                                <button class="budget-indicator" data-slide="1"></button>
+                            </div>
                         </div>
                     </div>
                     <div class="budget-planning-content">
@@ -195,11 +322,46 @@
                     </div>
                     <div class="customisable-settings-image">
                         <div class="settings-mockup">
-                            <img src="screens/settings1.png" alt="Clearvertise Customisable Settings Interface" 
-                            class="settings-screen-img clickable-image" 
-                            style="max-width: 120%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-                            onclick="openImageModal(this.src, this.alt)"
-                            loading="lazy">
+                            <!-- Image Carousel Container -->
+                            <div class="settings-carousel-container">
+                                <!-- Previous Button -->
+                                <button class="settings-carousel-btn settings-carousel-prev" aria-label="Previous Image">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                
+                                <!-- Image Track -->
+                                <div class="settings-carousel-track">
+                                    <div class="settings-carousel-slide active">
+                                        <img src="screens/settings1.png" alt="Clearvertise Customisable Settings Interface" 
+                                        class="settings-screen-img clickable-image" 
+                                        style="max-width: 120%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                                        onclick="openImageModal(this.src, this.alt)"
+                                        loading="lazy">
+                                    </div>
+                                    <div class="settings-carousel-slide">
+                                        <img src="screens/dashboard1.png" alt="Clearvertise Dashboard Settings View" 
+                                        class="settings-screen-img clickable-image" 
+                                        style="max-width: 120%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                                        onclick="openImageModal(this.src, this.alt)"
+                                        loading="lazy">
+                                    </div>
+                                </div>
+                                
+                                <!-- Next Button -->
+                                <button class="settings-carousel-btn settings-carousel-next" aria-label="Next Image">
+                                    <svg viewBox="0 0 24 24" fill="none">
+                                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <!-- Carousel Indicators -->
+                            <div class="settings-carousel-indicators">
+                                <button class="settings-indicator active" data-slide="0"></button>
+                                <button class="settings-indicator" data-slide="1"></button>
+                            </div>
                         </div>
                     </div>
                 </div>

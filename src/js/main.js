@@ -731,6 +731,276 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Features Carousel Functionality
+    const featuresCarouselContainer = document.querySelector('.features-carousel-container');
+    const featuresCarouselTrack = document.querySelector('.features-carousel-track');
+    const featuresCarouselSlides = document.querySelectorAll('.features-carousel-slide');
+    const featuresCarouselPrev = document.querySelector('.features-carousel-prev');
+    const featuresCarouselNext = document.querySelector('.features-carousel-next');
+    const featuresIndicators = document.querySelectorAll('.features-indicator');
+
+    if (featuresCarouselContainer && featuresCarouselSlides.length > 0) {
+        let currentFeaturesSlide = 0;
+        const totalFeaturesSlides = featuresCarouselSlides.length;
+
+        function updateFeaturesCarousel() {
+            // Update slides visibility
+            featuresCarouselSlides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentFeaturesSlide);
+            });
+
+            // Update indicators
+            featuresIndicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentFeaturesSlide);
+            });
+        }
+
+        function nextFeaturesSlide() {
+            currentFeaturesSlide = (currentFeaturesSlide + 1) % totalFeaturesSlides;
+            updateFeaturesCarousel();
+        }
+
+        function prevFeaturesSlide() {
+            currentFeaturesSlide = (currentFeaturesSlide - 1 + totalFeaturesSlides) % totalFeaturesSlides;
+            updateFeaturesCarousel();
+        }
+
+        function goToFeaturesSlide(index) {
+            currentFeaturesSlide = index;
+            updateFeaturesCarousel();
+        }
+
+        // Event listeners
+        if (featuresCarouselNext) {
+            featuresCarouselNext.addEventListener('click', nextFeaturesSlide);
+        }
+
+        if (featuresCarouselPrev) {
+            featuresCarouselPrev.addEventListener('click', prevFeaturesSlide);
+        }
+
+        // Indicator clicks
+        featuresIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToFeaturesSlide(index));
+        });
+
+        // Keyboard navigation for features carousel
+        document.addEventListener('keydown', (e) => {
+            if (featuresCarouselContainer.matches(':hover')) {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    prevFeaturesSlide();
+                }
+                if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    nextFeaturesSlide();
+                }
+            }
+        });
+
+        // Auto-play functionality (optional - every 8 seconds)
+        let featuresAutoplayInterval;
+
+        function startFeaturesAutoplay() {
+            featuresAutoplayInterval = setInterval(nextFeaturesSlide, 6000);
+        }
+
+        function stopFeaturesAutoplay() {
+            clearInterval(featuresAutoplayInterval);
+        }
+
+        // Start autoplay and pause on hover
+        startFeaturesAutoplay();
+        featuresCarouselContainer.addEventListener('mouseenter', stopFeaturesAutoplay);
+        featuresCarouselContainer.addEventListener('mouseleave', startFeaturesAutoplay);
+
+        // Initialize carousel
+        updateFeaturesCarousel();
+    }
+
+    // Solution Carousel Functionality
+    const solutionCarouselContainer = document.querySelector('.solution-carousel-container');
+    const solutionCarouselSlides = document.querySelectorAll('.solution-carousel-slide');
+    const solutionCarouselPrev = document.querySelector('.solution-carousel-prev');
+    const solutionCarouselNext = document.querySelector('.solution-carousel-next');
+    const solutionIndicators = document.querySelectorAll('.solution-indicator');
+
+    if (solutionCarouselContainer && solutionCarouselSlides.length > 0) {
+        let currentSolutionSlide = 0;
+        const totalSolutionSlides = solutionCarouselSlides.length;
+
+        function updateSolutionCarousel() {
+            solutionCarouselSlides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSolutionSlide);
+            });
+            solutionIndicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSolutionSlide);
+            });
+        }
+
+        function nextSolutionSlide() {
+            currentSolutionSlide = (currentSolutionSlide + 1) % totalSolutionSlides;
+            updateSolutionCarousel();
+        }
+
+        function prevSolutionSlide() {
+            currentSolutionSlide = (currentSolutionSlide - 1 + totalSolutionSlides) % totalSolutionSlides;
+            updateSolutionCarousel();
+        }
+
+        function goToSolutionSlide(index) {
+            currentSolutionSlide = index;
+            updateSolutionCarousel();
+        }
+
+        if (solutionCarouselNext) {
+            solutionCarouselNext.addEventListener('click', nextSolutionSlide);
+        }
+        if (solutionCarouselPrev) {
+            solutionCarouselPrev.addEventListener('click', prevSolutionSlide);
+        }
+
+        solutionIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToSolutionSlide(index));
+        });
+
+        // Auto-play functionality
+        let solutionAutoplayInterval;
+        function startSolutionAutoplay() {
+            solutionAutoplayInterval = setInterval(nextSolutionSlide, 6000);
+        }
+        function stopSolutionAutoplay() {
+            clearInterval(solutionAutoplayInterval);
+        }
+        startSolutionAutoplay();
+        solutionCarouselContainer.addEventListener('mouseenter', stopSolutionAutoplay);
+        solutionCarouselContainer.addEventListener('mouseleave', startSolutionAutoplay);
+
+        updateSolutionCarousel();
+    }
+
+    // Budget Carousel Functionality
+    const budgetCarouselContainer = document.querySelector('.budget-carousel-container');
+    const budgetCarouselSlides = document.querySelectorAll('.budget-carousel-slide');
+    const budgetCarouselPrev = document.querySelector('.budget-carousel-prev');
+    const budgetCarouselNext = document.querySelector('.budget-carousel-next');
+    const budgetIndicators = document.querySelectorAll('.budget-indicator');
+
+    if (budgetCarouselContainer && budgetCarouselSlides.length > 0) {
+        let currentBudgetSlide = 0;
+        const totalBudgetSlides = budgetCarouselSlides.length;
+
+        function updateBudgetCarousel() {
+            budgetCarouselSlides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentBudgetSlide);
+            });
+            budgetIndicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentBudgetSlide);
+            });
+        }
+
+        function nextBudgetSlide() {
+            currentBudgetSlide = (currentBudgetSlide + 1) % totalBudgetSlides;
+            updateBudgetCarousel();
+        }
+
+        function prevBudgetSlide() {
+            currentBudgetSlide = (currentBudgetSlide - 1 + totalBudgetSlides) % totalBudgetSlides;
+            updateBudgetCarousel();
+        }
+
+        function goToBudgetSlide(index) {
+            currentBudgetSlide = index;
+            updateBudgetCarousel();
+        }
+
+        if (budgetCarouselNext) {
+            budgetCarouselNext.addEventListener('click', nextBudgetSlide);
+        }
+        if (budgetCarouselPrev) {
+            budgetCarouselPrev.addEventListener('click', prevBudgetSlide);
+        }
+
+        budgetIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToBudgetSlide(index));
+        });
+
+        // Auto-play functionality
+        let budgetAutoplayInterval;
+        function startBudgetAutoplay() {
+            budgetAutoplayInterval = setInterval(nextBudgetSlide, 6000);
+        }
+        function stopBudgetAutoplay() {
+            clearInterval(budgetAutoplayInterval);
+        }
+        startBudgetAutoplay();
+        budgetCarouselContainer.addEventListener('mouseenter', stopBudgetAutoplay);
+        budgetCarouselContainer.addEventListener('mouseleave', startBudgetAutoplay);
+
+        updateBudgetCarousel();
+    }
+
+    // Settings Carousel Functionality
+    const settingsCarouselContainer = document.querySelector('.settings-carousel-container');
+    const settingsCarouselSlides = document.querySelectorAll('.settings-carousel-slide');
+    const settingsCarouselPrev = document.querySelector('.settings-carousel-prev');
+    const settingsCarouselNext = document.querySelector('.settings-carousel-next');
+    const settingsIndicators = document.querySelectorAll('.settings-indicator');
+
+    if (settingsCarouselContainer && settingsCarouselSlides.length > 0) {
+        let currentSettingsSlide = 0;
+        const totalSettingsSlides = settingsCarouselSlides.length;
+
+        function updateSettingsCarousel() {
+            settingsCarouselSlides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSettingsSlide);
+            });
+            settingsIndicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSettingsSlide);
+            });
+        }
+
+        function nextSettingsSlide() {
+            currentSettingsSlide = (currentSettingsSlide + 1) % totalSettingsSlides;
+            updateSettingsCarousel();
+        }
+
+        function prevSettingsSlide() {
+            currentSettingsSlide = (currentSettingsSlide - 1 + totalSettingsSlides) % totalSettingsSlides;
+            updateSettingsCarousel();
+        }
+
+        function goToSettingsSlide(index) {
+            currentSettingsSlide = index;
+            updateSettingsCarousel();
+        }
+
+        if (settingsCarouselNext) {
+            settingsCarouselNext.addEventListener('click', nextSettingsSlide);
+        }
+        if (settingsCarouselPrev) {
+            settingsCarouselPrev.addEventListener('click', prevSettingsSlide);
+        }
+
+        settingsIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToSettingsSlide(index));
+        });
+
+        // Auto-play functionality
+        let settingsAutoplayInterval;
+        function startSettingsAutoplay() {
+            settingsAutoplayInterval = setInterval(nextSettingsSlide, 6000);
+        }
+        function stopSettingsAutoplay() {
+            clearInterval(settingsAutoplayInterval);
+        }
+        startSettingsAutoplay();
+        settingsCarouselContainer.addEventListener('mouseenter', stopSettingsAutoplay);
+        settingsCarouselContainer.addEventListener('mouseleave', startSettingsAutoplay);
+
+        updateSettingsCarousel();
+    }
+
     // Make functions available globally for testing
     window.closeModal = closeModal;
     window.openModal = openModal;

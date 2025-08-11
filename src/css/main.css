@@ -767,6 +767,413 @@ body {
     z-index: 2;
 }
 
+/* Features Carousel Styles */
+.features-carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    border-radius: 12px;
+}
+
+.features-carousel-track {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.features-carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 1;
+}
+
+.features-carousel-slide.active {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+}
+
+.features-carousel-slide img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.features-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0.6;
+}
+
+.features-carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    opacity: 1;
+}
+
+.features-carousel-btn svg {
+    width: 16px;
+    height: 16px;
+    color: #1890FF;
+}
+
+.features-carousel-prev {
+    left: -5px;
+}
+
+.features-carousel-next {
+    right: -5px;
+}
+
+.features-carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.features-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: #d1d5db;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.features-indicator.active {
+    background: #1890FF;
+    transform: scale(1.2);
+}
+
+.features-indicator:hover {
+    background: #1890FF;
+}
+
+/* Solution Carousel Styles */
+.solution-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.solution-carousel-track {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 300px; /* Ensure minimum height */
+}
+
+.solution-carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto; /* Changed from 100% to auto */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 1;
+}
+
+.solution-carousel-slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    position: relative; /* Make active slide relative to establish height */
+}
+
+.solution-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0.6;
+}
+
+.solution-carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    opacity: 1;
+}
+
+.solution-carousel-btn svg {
+    width: 16px;
+    height: 16px;
+    color: #1890FF;
+}
+
+.solution-carousel-prev {
+    left: -5px;
+}
+
+.solution-carousel-next {
+    right: -5px;
+}
+
+.solution-carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.solution-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: #d1d5db;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.solution-indicator.active {
+    background: #1890FF;
+    transform: scale(1.2);
+}
+
+.solution-indicator:hover {
+    background: #1890FF;
+}
+
+/* Budget Carousel Styles */
+.budget-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.budget-carousel-track {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 300px; /* Ensure minimum height */
+}
+
+.budget-carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto; /* Changed from 100% to auto */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 1;
+}
+
+.budget-carousel-slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    position: relative; /* Make active slide relative to establish height */
+}
+
+.budget-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0.6;
+}
+
+.budget-carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    opacity: 1;
+}
+
+.budget-carousel-btn svg {
+    width: 16px;
+    height: 16px;
+    color: #1890FF;
+}
+
+.budget-carousel-prev {
+    left: -5px;
+}
+
+.budget-carousel-next {
+    right: -5px;
+}
+
+.budget-carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.budget-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: #d1d5db;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.budget-indicator.active {
+    background: #1890FF;
+    transform: scale(1.2);
+}
+
+.budget-indicator:hover {
+    background: #1890FF;
+}
+
+/* Settings Carousel Styles */
+.settings-carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.settings-carousel-track {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 300px; /* Ensure minimum height */
+}
+
+.settings-carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto; /* Changed from 100% to auto */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 1;
+}
+
+.settings-carousel-slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+    position: relative; /* Make active slide relative to establish height */
+}
+
+.settings-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0.6;
+}
+
+.settings-carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    opacity: 1;
+}
+
+.settings-carousel-btn svg {
+    width: 16px;
+    height: 16px;
+    color: #1890FF;
+}
+
+.settings-carousel-prev {
+    left: -5px;
+}
+
+.settings-carousel-next {
+    right: -5px;
+}
+
+.settings-carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.settings-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: #d1d5db;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.settings-indicator.active {
+    background: #1890FF;
+    transform: scale(1.2);
+}
+
+.settings-indicator:hover {
+    background: #1890FF;
+}
+
 /* Budget Planning Section */
 .budget-planning-section {
     padding: 100px 0;
