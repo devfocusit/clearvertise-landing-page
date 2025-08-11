@@ -352,11 +352,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize carousel
     updateCarousel(false);
 
-    // Image Modal functionality
-    window.openImageModal = function(src, alt) {
+    // Image Modal functionality with carousel support
+    let currentModalCarousel = null;
+    let currentModalSlideIndex = 0;
+    let modalCarouselImages = [];
+
+    window.openImageModal = function(src, alt, carouselType = null, slideIndex = 0) {
         const modal = document.getElementById('imageModal');
         const modalImage = document.getElementById('modalImage');
         const caption = document.getElementById('imageCaption');
+        const prevBtn = document.querySelector('.modal-prev-btn');
+        const nextBtn = document.querySelector('.modal-next-btn');
+        const indicators = document.getElementById('modalIndicators');
 
         if (modal && modalImage && caption) {
             modal.style.display = 'block';
@@ -364,8 +371,107 @@ document.addEventListener('DOMContentLoaded', function() {
             modalImage.alt = alt;
             caption.textContent = alt;
 
+            // Setup carousel if type is provided
+            if (carouselType) {
+                currentModalCarousel = carouselType;
+                currentModalSlideIndex = slideIndex;
+                setupModalCarousel(carouselType);
+                
+                if (prevBtn) prevBtn.style.display = 'block';
+                if (nextBtn) nextBtn.style.display = 'block';
+                if (indicators) indicators.style.display = 'flex';
+            } else {
+                currentModalCarousel = null;
+                if (prevBtn) prevBtn.style.display = 'none';
+                if (nextBtn) nextBtn.style.display = 'none';
+                if (indicators) indicators.style.display = 'none';
+            }
+
             // Prevent body scroll when modal is open
             document.body.style.overflow = 'hidden';
+        }
+    };
+
+    function setupModalCarousel(carouselType) {
+        const indicators = document.getElementById('modalIndicators');
+        modalCarouselImages = [];
+
+        // Get images based on carousel type
+        let slides = [];
+        switch(carouselType) {
+            case 'features':
+                slides = document.querySelectorAll('.features-carousel-slide img');
+                break;
+            case 'solution':
+                slides = document.querySelectorAll('.solution-carousel-slide img');
+                break;
+            case 'budget':
+                slides = document.querySelectorAll('.budget-carousel-slide img');
+                break;
+            case 'settings':
+                slides = document.querySelectorAll('.settings-carousel-slide img');
+                break;
+        }
+
+        // Store image data
+        slides.forEach(img => {
+            modalCarouselImages.push({
+                src: img.src,
+                alt: img.alt
+            });
+        });
+
+        // Create indicators
+        if (indicators && modalCarouselImages.length > 1) {
+            indicators.innerHTML = '';
+            modalCarouselImages.forEach((_, index) => {
+                const indicator = document.createElement('button');
+                indicator.className = 'modal-indicator';
+                if (index === currentModalSlideIndex) {
+                    indicator.classList.add('active');
+                }
+                indicator.onclick = () => goToModalSlide(index);
+                indicators.appendChild(indicator);
+            });
+        }
+    }
+
+    function updateModalCarousel() {
+        const modalImage = document.getElementById('modalImage');
+        const caption = document.getElementById('imageCaption');
+        const indicators = document.querySelectorAll('.modal-indicator');
+
+        if (modalCarouselImages.length > 0 && modalImage && caption) {
+            const currentImage = modalCarouselImages[currentModalSlideIndex];
+            modalImage.src = currentImage.src;
+            modalImage.alt = currentImage.alt;
+            caption.textContent = currentImage.alt;
+
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentModalSlideIndex);
+            });
+        }
+    }
+
+    window.nextModalImage = function() {
+        if (modalCarouselImages.length > 0) {
+            currentModalSlideIndex = (currentModalSlideIndex + 1) % modalCarouselImages.length;
+            updateModalCarousel();
+        }
+    };
+
+    window.prevModalImage = function() {
+        if (modalCarouselImages.length > 0) {
+            currentModalSlideIndex = (currentModalSlideIndex - 1 + modalCarouselImages.length) % modalCarouselImages.length;
+            updateModalCarousel();
+        }
+    };
+
+    window.goToModalSlide = function(index) {
+        if (modalCarouselImages.length > 0 && index >= 0 && index < modalCarouselImages.length) {
+            currentModalSlideIndex = index;
+            updateModalCarousel();
         }
     };
 
@@ -373,16 +479,32 @@ document.addEventListener('DOMContentLoaded', function() {
         const modal = document.getElementById('imageModal');
         if (modal) {
             modal.style.display = 'none';
+            currentModalCarousel = null;
+            modalCarouselImages = [];
+            currentModalSlideIndex = 0;
 
             // Restore body scroll
             document.body.style.overflow = 'auto';
         }
     };
 
-    // Close modal on Escape key
+    // Close modal on Escape key and add arrow key navigation
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeImageModal();
+        const modal = document.getElementById('imageModal');
+        if (modal && modal.style.display === 'block') {
+            switch(e.key) {
+                case 'Escape':
+                    closeImageModal();
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    prevModalImage();
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    nextModalImage();
+                    break;
+            }
         }
     });
 
