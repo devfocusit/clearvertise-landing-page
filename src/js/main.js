@@ -529,8 +529,45 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Note: Form submission is handled naturally by FormSubmit
-    // No JavaScript intervention needed for basic form submission
+    // Set dynamic redirect URL for FormSubmit
+    function setFormRedirectURL() {
+        const nextInput = document.querySelector('input[name="_next"]');
+        if (nextInput) {
+            const currentURL = window.location.origin + window.location.pathname;
+            nextInput.value = currentURL + '?success=true';
+        }
+    }
+
+    // Check for success parameter on page load
+    function checkForSuccess() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            // Show modal with success message
+            if (modal) {
+                openModal();
+                
+                // Hide form and show success message
+                setTimeout(() => {
+                    if (contactForm) {
+                        contactForm.style.display = 'none';
+                    }
+                    if (successMessage) {
+                        successMessage.style.display = 'block';
+                    }
+                }, 100);
+            }
+            
+            // Clean up URL by removing the success parameter
+            const newUrl = window.location.origin + window.location.pathname;
+            window.history.replaceState({}, document.title, newUrl);
+        }
+    }
+    
+    // Initialize form redirect URL and check for success
+    setFormRedirectURL();
+    checkForSuccess();
+
+    // Note: Form submission is handled naturally by FormSubmit with dynamic redirect
 
 
 
