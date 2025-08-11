@@ -73,6 +73,12 @@
         color: #1890FF !important; /* Always blue on mobile */
     }
     
+    .logo-subtitle {
+        font-size: 0.65rem;
+        color: #1890FF !important; /* Always blue on mobile */
+        opacity: 0.7 !important;
+    }
+    
     .logo-symbol {
         height: 32px; /* Smaller logo on mobile */
         opacity: 0 !important;
