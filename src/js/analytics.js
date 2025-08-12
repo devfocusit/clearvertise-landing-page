@@ -88,10 +88,24 @@
         if (contactForm) {
             contactForm.addEventListener('submit', function(e) {
                 const formData = new FormData(this);
+                
+                // Event 2: Send Request Submit
+                trackEvent('form_submit', 'contact_request', {
+                    event_category: 'conversion',
+                    event_label: 'send_request_submitted',
+                    customer_type: formData.get('customer_type') || 'unknown',
+                    has_company: !!formData.get('company'),
+                    has_message: !!formData.get('message'),
+                    form_completion_time: getFormCompletionTime(),
+                    timestamp: Date.now()
+                });
+
+                // Also track as conversion event for GA4
                 trackEvent('generate_lead', 'contact_form', {
                     customer_type: formData.get('customer_type') || 'unknown',
                     has_company: !!formData.get('company'),
-                    has_message: !!formData.get('message')
+                    has_message: !!formData.get('message'),
+                    value: 1 // Assign value to lead
                 });
             });
         }
@@ -105,6 +119,70 @@
                 });
             });
         });
+    }
+
+    // Track Contact Modal Events - Send Request Tracking
+    function setupContactModalTracking() {
+        let formStartTime = null;
+
+        // Track modal open events (Event 1: Send Request Form Open)
+        function trackModalOpen(trigger) {
+            formStartTime = Date.now(); // Start timing form completion
+            
+            trackEvent('form_start', 'contact_request', {
+                event_category: 'engagement',
+                event_label: 'send_request_form_open',
+                trigger_element: trigger,
+                page_location: window.location.href,
+                timestamp: formStartTime
+            });
+
+            // Also send a custom GA4 event
+            if (typeof gtag === 'function') {
+                gtag('event', 'send_request_form_open', {
+                    event_category: 'engagement',
+                    event_label: 'contact_modal_opened',
+                    trigger_source: trigger
+                });
+            }
+        }
+
+        // Get form completion time
+        function getFormCompletionTime() {
+            if (formStartTime) {
+                return Math.floor((Date.now() - formStartTime) / 1000); // in seconds
+            }
+            return 0;
+        }
+
+        // Track all "Get Started" buttons that open the contact modal
+        document.querySelectorAll('a[href="#"], a[href="#contact"], .btn-primary').forEach(button => {
+            // Check if this button should open the contact modal
+            const buttonText = button.textContent.trim();
+            if (buttonText.includes('Get Started') || buttonText.includes('Contact')) {
+                button.addEventListener('click', function(e) {
+                    const triggerInfo = {
+                        text: buttonText,
+                        location: this.closest('section')?.id || 'unknown',
+                        class: this.className
+                    };
+                    trackModalOpen(JSON.stringify(triggerInfo));
+                });
+            }
+        });
+
+        // Alternative: If you have a specific modal open function, track it directly
+        // Override the modal open function if it exists
+        if (typeof openContactModal === 'function') {
+            const originalOpenModal = openContactModal;
+            window.openContactModal = function(...args) {
+                trackModalOpen('direct_function_call');
+                return originalOpenModal.apply(this, args);
+            };
+        }
+
+        // Store the function globally for manual tracking
+        window.getFormCompletionTime = getFormCompletionTime;
     }
 
     // Track Contact Modal Events - Enhanced for Send Request
@@ -396,11 +474,13 @@
             initAnalytics();
             trackSectionViews();
             trackBounceRate();
+            setupContactModalTracking(); // Add contact modal tracking
         });
     } else {
         initAnalytics();
         trackSectionViews();
         trackBounceRate();
+        setupContactModalTracking(); // Add contact modal tracking
     }
 
     // Track initial page view
