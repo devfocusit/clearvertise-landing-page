@@ -7,7 +7,7 @@
     // Analytics Configuration
     const AnalyticsConfig = {
         // Replace with your actual Google Analytics ID
-        GA_ID: 'GA_MEASUREMENT_ID',
+        GA_ID: 'G-TSG0RK9QDY',
         
         // Event tracking configuration
         trackClicks: true,
