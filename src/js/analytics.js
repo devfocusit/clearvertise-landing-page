@@ -107,6 +107,171 @@
         });
     }
 
+    // Track Contact Modal Events - Enhanced for Send Request
+    function setupContactModalTracking() {
+        // Track modal open events (Event 1: Form Open)
+        function trackModalOpen(trigger) {
+            trackEvent('form_start', 'contact_request', {
+                event_category: 'engagement',
+                event_label: 'send_request_form_open',
+                trigger_element: trigger,
+                page_location: window.location.href,
+                timestamp: Date.now()
+            });
+        }
+
+        // Track form submission events (Event 2: Form Submit)
+        function trackFormSubmission(formData) {
+            trackEvent('form_submit', 'contact_request', {
+                event_category: 'conversion',
+                event_label: 'send_request_form_submit',
+                customer_type: formData.get('customer_type') || 'unknown',
+                has_company: !!formData.get('company'),
+                has_message: !!formData.get('message'),
+                form_completion_time: getFormCompletionTime()
+            });
+        }
+
+        // Track all "Get Started" buttons that open the contact modal
+        document.querySelectorAll('.btn-primary, .btn-large').forEach(button => {
+            const buttonText = button.textContent.trim();
+            if (buttonText.includes('Get Started') || buttonText.includes('Contact')) {
+                button.addEventListener('click', function(e) {
+                    trackModalOpen(buttonText);
+                });
+            }
+        });
+
+        // Track contact form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            let formStartTime = null;
+            
+            // Record when user starts interacting with form
+            const formInputs = contactForm.querySelectorAll('input, textarea, select');
+            formInputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    if (!formStartTime) {
+                        formStartTime = Date.now();
+                    }
+                }, { once: true });
+            });
+
+            // Track form submission
+            contactForm.addEventListener('submit', function(e) {
+                const formData = new FormData(this);
+                trackFormSubmission(formData);
+            });
+        }
+
+        // Helper function to calculate form completion time
+        function getFormCompletionTime() {
+            if (formStartTime) {
+                return Math.round((Date.now() - formStartTime) / 1000); // seconds
+            }
+            return null;
+        }
+
+        // Track modal close events (optional)
+        const modalCloseButtons = document.querySelectorAll('.close-modal, .btn-cancel');
+        modalCloseButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                trackEvent('form_abandon', 'contact_request', {
+                    event_category: 'engagement',
+                    event_label: 'send_request_form_close'
+                });
+            });
+        });
+
+        let formStartTime = null;
+    }
+
+        // Track actual form submission
+        function trackFormSubmission(formData) {
+            trackEvent('purchase', 'contact_form_submit', {
+                customer_type: formData.get('customer_type') || 'unknown',
+                has_company: !!formData.get('company'),
+                has_message: !!formData.get('message'),
+                form_completion_time: Date.now() - window.modalOpenTime
+            });
+        }
+
+        // Track "Get Started" button clicks that open modal
+        document.querySelectorAll('a[href="#"], a[href="#contact"]').forEach(button => {
+            if (button.textContent.includes('Get Started')) {
+                button.addEventListener('click', function(e) {
+                    window.modalOpenTime = Date.now(); // Store modal open time
+                    trackModalOpen('get_started_button');
+                });
+            }
+        });
+
+        // Track modal close events
+        const modal = document.getElementById('contactModal');
+        if (modal) {
+            // Track when modal is shown (if using a modal library)
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                        const isVisible = modal.style.display !== 'none' && 
+                                         !modal.classList.contains('hidden');
+                        if (isVisible && !window.modalTrackingActive) {
+                            window.modalTrackingActive = true;
+                            window.modalOpenTime = Date.now();
+                            trackModalOpen('modal_display_change');
+                        } else if (!isVisible && window.modalTrackingActive) {
+                            window.modalTrackingActive = false;
+                            const timeInModal = Date.now() - (window.modalOpenTime || 0);
+                            trackEvent('engagement', 'modal_close', {
+                                time_in_modal: timeInModal
+                            });
+                        }
+                    }
+                });
+            });
+            observer.observe(modal, { attributes: true, attributeFilter: ['style', 'class'] });
+        }
+
+        // Enhanced form submission tracking
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                const formData = new FormData(this);
+                trackFormSubmission(formData);
+                
+                // Track conversion funnel
+                trackEvent('conversion', 'lead_generated', {
+                    funnel_step: 'form_submit',
+                    lead_quality: formData.get('company') ? 'business' : 'individual'
+                });
+            });
+
+            // Track form abandonment
+            let formStarted = false;
+            const formFields = contactForm.querySelectorAll('input, textarea');
+            
+            formFields.forEach(field => {
+                field.addEventListener('input', function() {
+                    if (!formStarted) {
+                        formStarted = true;
+                        trackEvent('begin_checkout', 'form_start', {
+                            first_field: this.name || this.id
+                        });
+                    }
+                });
+            });
+
+            // Track form abandonment on modal close
+            window.addEventListener('beforeunload', function() {
+                if (formStarted && window.modalTrackingActive) {
+                    trackEvent('abandonment', 'form_abandon', {
+                        time_to_abandon: Date.now() - (window.modalOpenTime || 0)
+                    });
+                }
+            });
+        }
+    }
+
     // Track Scroll Depth
     function setupScrollTracking() {
         if (!AnalyticsConfig.trackScrollDepth) return;
