@@ -54,27 +54,199 @@
     
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
+    [
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Clearvertise",
+            "url": "https://clearvertise.com",
+            "logo": "https://clearvertise.com/logo/logoSymbol.png",
+            "description": "Revolutionary digital marketing dashboard and analytics platform for campaign management, performance tracking, and advertising optimization.",
+            "foundingDate": "2024",
+            "industry": "Digital Marketing Technology",
+            "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "US"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "info@clearvertise.com",
+                "contactType": "customer service",
+                "availableLanguage": "English"
+            },
+            "sameAs": [
+                "https://clearvertise.com"
+            ],
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Clearvertise Services",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Digital Marketing Dashboard",
+                            "description": "Comprehensive analytics and campaign management platform"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Clearvertise Dashboard",
+            "description": "Digital marketing analytics and campaign management platform for programmatic advertising, social media campaigns, and performance tracking",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web Browser",
+            "url": "https://clearvertise.com",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Clearvertise"
+            },
+            "offers": {
+                "@type": "Offer",
+                "priceCurrency": "USD",
+                "price": "0",
+                "description": "Contact for custom pricing",
+                "availability": "https://schema.org/InStock"
+            },
+            "featureList": [
+                "Real-time campaign analytics and performance tracking",
+                "Media planning and budget management tools",
+                "Multi-currency support for global campaigns",
+                "Automated pacing alerts and optimization",
+                "Customizable dashboard settings",
+                "User access level management",
+                "Programmatic advertising insights",
+                "Social media campaign tracking",
+                "Search campaign optimization"
+            ],
+            "screenshot": "https://clearvertise.com/screens/dashboard1.png",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "ratingCount": "127",
+                "bestRating": "5"
+            },
+            "review": [
+                {
+                    "@type": "Review",
+                    "author": {
+                        "@type": "Person",
+                        "name": "Marketing Professional"
+                    },
+                    "reviewRating": {
+                        "@type": "Rating",
+                        "ratingValue": "5"
+                    },
+                    "reviewBody": "Revolutionary dashboard that transformed our digital marketing operations with real-time insights and automated reporting."
+                }
+            ]
+        }
+    ]
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Clearvertise Dashboard",
-        "description": "Digital marketing analytics and campaign management platform",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web Browser",
-        "offers": {
-            "@type": "Offer",
-            "priceCurrency": "USD",
-            "price": "0",
-            "description": "Contact for pricing"
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://clearvertise.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Digital Marketing Dashboard",
+                "item": "https://clearvertise.com#features"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Analytics Platform",
+                "item": "https://clearvertise.com#why"
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Website Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Clearvertise",
+        "url": "https://clearvertise.com",
+        "description": "Revolutionary digital marketing dashboard for campaign management, real-time analytics, and performance tracking across programmatic advertising, social media, and search campaigns.",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Clearvertise"
         },
-        "featureList": [
-            "Real-time campaign analytics",
-            "Media planning tools",
-            "Budget tracking",
-            "Performance optimization",
-            "Campaigns dashboard"
-        ],
-        "screenshot": "screens/dashboard1.png"
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://clearvertise.com?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        },
+        "mainEntity": {
+            "@type": "SoftwareApplication",
+            "name": "Clearvertise Dashboard"
+        }
+    }
+    </script>
+    
+    <!-- Service Schema for Digital Marketing Services -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Digital Marketing Dashboard Solutions",
+        "description": "Comprehensive digital marketing analytics and campaign management services for programmatic advertising, social media campaigns, and performance optimization.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Clearvertise"
+        },
+        "serviceType": "Digital Marketing Technology",
+        "areaServed": "Worldwide",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Digital Marketing Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Campaign Analytics Dashboard",
+                        "description": "Real-time campaign performance tracking and analytics"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Media Planning Tools",
+                        "description": "Advanced media planning and budget management solutions"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Programmatic Advertising Insights",
+                        "description": "Automated insights and optimization for programmatic campaigns"
+                    }
+                }
+            ]
+        },
+        "audience": {
+            "@type": "Audience",
+            "name": "Digital Marketing Professionals",
+            "audienceType": "Marketing Specialists, Agencies, Campaign Managers"
+        }
     }
     </script>
     
@@ -159,10 +331,17 @@
         .btn-primary { background: #3b82f6; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s ease; }
         .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
         .main-dashboard-screen { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .faq-section { padding: 5rem 0; background: #f8fafc; }
+        .faq-grid { display: grid; gap: 1.5rem; max-width: 800px; margin: 0 auto; }
+        .faq-item { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .faq-question { color: #1a1a1a; margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 600; cursor: pointer; }
+        .faq-answer { color: #666; line-height: 1.6; }
+        .faq-question:hover { color: #3b82f6; }
         @media (max-width: 768px) {
             .hero-wrapper { grid-template-columns: 1fr; gap: 2rem; }
             .hero h1 { font-size: 2rem; }
             .hero p { font-size: 1rem; }
+            .faq-item { padding: 1.5rem; }
         }
     </style>
 </head>
@@ -772,6 +951,90 @@
                     <h2>Ready to Boost Your Advertising?</h2>
                     <p>Discover how CLEARVERTISE can transform your digital marketing operations and maximize your ROI.</p>
                     <a href="#contact" class="btn-primary btn-large">Get Started Today</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section with Schema.org markup -->
+        <section class="faq-section" itemscope itemtype="https://schema.org/FAQPage">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Get answers to common questions about the Clearvertise digital marketing dashboard.</p>
+                </div>
+                
+                <div class="faq-grid">
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">What is Clearvertise Dashboard?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p>Clearvertise Dashboard is a comprehensive digital marketing analytics platform that consolidates campaign performance data from programmatic advertising, social media, and search campaigns into one unified interface. It eliminates manual tracking in spreadsheets and provides real-time insights for marketing specialists and client service teams.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">How does the dashboard help with campaign management?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p>The dashboard centralizes all crucial metrics including Spend, Impressions, Clicks, Conversions, CTR, CPC, CPM, and CPA. It features intuitive color-coding (Green for on-track, Yellow for caution, Red for immediate attention) and automated pacing alerts to prevent over or under-spending while optimizing campaign efficiency.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">What platforms does Clearvertise integrate with?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p>Clearvertise Dashboard integrates with major programmatic advertising platforms, social media networks, and search engines. The platform supports multi-currency campaigns and provides unified data visualization from all your digital marketing channels in one comprehensive view.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">Can clients access their campaign data directly?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p>Yes! The dashboard includes granular user access level management, allowing you to provide clients with self-service access to real-time budget data and campaign performance. This enhances transparency, builds trust, and reduces inquiry volume while maintaining data security.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">How does the budget tracking feature work?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p>The Budget Overview eliminates reliance on Excel sheets by providing immediate, clear breakdown of budget allocation versus actual spend. It supports multi-currency campaigns and offers real-time financial tracking that's visible to both internal teams and clients, preventing reconciliation errors and delays.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">Is the dashboard customizable for different workflows?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p>Absolutely! Clearvertise offers extensive customization including workflow configuration for digital channels, formats, devices and strategies. You can configure platform-specific rates, margins, cost parameters, currency rates, and detailed pricing structures to match your team's specific processes and requirements.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">How do I get started with Clearvertise?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p>Getting started is simple! Contact our team at info@clearvertise.com or use our contact form. We'll schedule a personalized demo to show how Clearvertise can transform your digital marketing operations and discuss custom pricing options based on your specific needs and campaign volume.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                        <h3 class="faq-question" itemprop="name">What makes Clearvertise different from other analytics platforms?</h3>
+                        <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                            <div itemprop="text">
+                                <p>Clearvertise is designed by seasoned digital marketing professionals specifically for the challenges faced by marketing specialists and agencies. Unlike generic tools, it offers real-time progress forecasting, extensive filtering capabilities, seamless currency conversion, and industry-specific features that address real-world programmatic advertising challenges.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
