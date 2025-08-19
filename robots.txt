@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://clearvertise.com/sitemap.xml
+
+# Block access to sensitive directories (if any exist in future)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
+# Allow crawling of CSS and JS files
+Allow: /src/css/
+Allow: /src/js/
+Allow: /src/assets/
+
+# Crawl-delay (optional, in seconds)
+Crawl-delay: 1

@@ -1,0 +1,8 @@
+# Force non-www (remove www)
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.clearvertise\.com [NC]
+RewriteRule ^(.*)$ https://clearvertise.com/$1 [R=301,L]
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://clearvertise.com/$1 [R=301,L]
