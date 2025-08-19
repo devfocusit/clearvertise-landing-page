@@ -9,6 +9,12 @@
     <meta name="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta name="Pragma" content="no-cache">
     <meta name="Expires" content="0">
+    
+    <!-- Performance and compression hints -->
+    <meta http-equiv="Accept-CH" content="DPR, Width, Viewport-Width">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="color-scheme" content="light">
+    
     <title>Clearvertise Dashboard - Digital Marketing Analytics & Campaign Management Platform</title>
     
     <!-- SEO Meta Tags -->
@@ -24,6 +30,13 @@
     
     <!-- Sitemap reference for search engines -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    
+    <!-- Resource hints for better performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.google-analytics.com">
     
     <!-- Open Graph Tags for Social Media -->
     <meta property="og:title" content="Clearvertise Dashboard - Digital Marketing Analytics Platform">
@@ -68,9 +81,17 @@
     <link rel="icon" type="image/png" href="logo/logoSymbol.png">
     <link rel="shortcut icon" type="image/png" href="logo/logoSymbol.png">
     <link rel="apple-touch-icon" href="logo/logoSymbol.png">
-    <link rel="stylesheet" href="css/main.css?v=1.0.20250810.1909">
-    <link rel="stylesheet" href="css/responsive.css?v=1.0.20250810.1909">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Load non-critical CSS asynchronously -->
+    <link rel="preload" href="css/main.css?v=1.0.20250810.1909" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/main.css?v=1.0.20250810.1909"></noscript>
+    
+    <link rel="preload" href="css/responsive.css?v=1.0.20250810.1909" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/responsive.css?v=1.0.20250810.1909"></noscript>
+    
+    <!-- Load fonts with font-display: swap -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
     
     <!-- Google Analytics 4 (GA4) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TSG0RK9QDY"></script>
@@ -82,9 +103,68 @@
             // Privacy-focused configuration
             anonymize_ip: true,
             allow_google_signals: false,
-            allow_ad_personalization_signals: false
+            allow_ad_personalization_signals: false,
+            // Enhanced measurement for Core Web Vitals
+            send_page_view: true,
+            custom_map: {
+                'custom_parameter_1': 'web_vitals_metric'
+            }
         });
+        
+        // Core Web Vitals tracking
+        function sendWebVitals() {
+            if ('web-vitals' in window) {
+                const { getCLS, getFID, getFCP, getLCP, getTTFB } = window['web-vitals'];
+                
+                function sendToGA(metric) {
+                    gtag('event', metric.name, {
+                        event_category: 'Web Vitals',
+                        event_label: metric.id,
+                        value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
+                        non_interaction: true,
+                        custom_parameter_1: metric.name
+                    });
+                }
+                
+                getCLS(sendToGA);
+                getFID(sendToGA);
+                getFCP(sendToGA);
+                getLCP(sendToGA);
+                getTTFB(sendToGA);
+            }
+        }
+        
+        // Load web-vitals library
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/web-vitals@3/dist/web-vitals.iife.js';
+        script.onload = sendWebVitals;
+        document.head.appendChild(script);
     </script>
+    
+    <!-- Preload critical resources for better Core Web Vitals -->
+    <link rel="preload" href="screens/dashboard1.gif" as="image">
+    <link rel="preload" href="css/main.css?v=1.0.20250810.1909" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    
+    <!-- Critical CSS for above-the-fold content -->
+    <style>
+        /* Critical CSS for immediate rendering */
+        body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        .header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 90px; }
+        .hero-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .hero h1 { font-size: 3rem; font-weight: 700; color: #1a1a1a; margin: 0 0 1.5rem 0; line-height: 1.2; }
+        .hero p { font-size: 1.2rem; color: #666; margin-bottom: 2rem; line-height: 1.6; }
+        .btn-primary { background: #3b82f6; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s ease; }
+        .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
+        .main-dashboard-screen { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        @media (max-width: 768px) {
+            .hero-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -128,9 +208,16 @@
                         </div>
                     </div>
                     <div class="hero-image">
-                        <img src="screens/dashboard1.gif" alt="Digital Marketing Analytics Dashboard - Real-time Campaign Performance Tracking" 
-                        class="main-dashboard-screen clickable-image" style="max-width: 700px; height: auto; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-                        onclick="openImageModal(this.src, this.alt)">
+                        <picture>
+                            <source srcset="screens/dashboard1.webp" type="image/webp">
+                            <img src="screens/dashboard1.gif" alt="Digital Marketing Analytics Dashboard - Real-time Campaign Performance Tracking" 
+                            class="main-dashboard-screen clickable-image" 
+                            width="700" height="450"
+                            style="max-width: 700px; height: auto; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                            onclick="openImageModal(this.src, this.alt)"
+                            loading="eager"
+                            decoding="async">
+                        </picture>
                     </div>
                 </div>
             </div>
@@ -155,15 +242,20 @@
                                     <div class="solution-carousel-slide active">
                                         <img src="screens/mediaPlan1.png" alt="Media Planning Dashboard - Digital Marketing Campaign Management Interface" 
                                         class="solution-screen-img clickable-image" 
+                                        width="600" height="400"
                                         style="max-width: 110%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-                                        onclick="openImageModal(this.src, this.alt, 'solution', 0)">
+                                        onclick="openImageModal(this.src, this.alt, 'solution', 0)"
+                                        loading="lazy"
+                                        decoding="async">
                                     </div>
                                     <div class="solution-carousel-slide">
                                         <img src="screens/mediaPlan2.png" alt="Clearvertise Progress Indication" 
                                         class="solution-screen-img clickable-image" 
+                                        width="600" height="400"
                                         style="max-width: 110%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
                                         onclick="openImageModal(this.src, this.alt, 'solution', 1)"
-                                        loading="lazy">
+                                        loading="lazy"
+                                        decoding="async">
                                     </div>
                                     <!-- <div class="solution-carousel-slide">
                                         <img src="screens/mediaPlan4.png" alt="Clearvertise Progress Tracking" 
@@ -795,7 +887,66 @@
     </div>
 
 
-    <script src="js/main.js?v=1.0.20250810.1909"></script>
-    <script src="js/analytics.js?v=1.0.20250810.1909"></script>
+    <script src="js/main.js?v=1.0.20250810.1909" defer></script>
+    <script src="js/analytics.js?v=1.0.20250810.1909" defer></script>
+    
+    <!-- Performance optimization script -->
+    <script>
+        // Service Worker registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            });
+        }
+        
+        // Preload next likely user interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Preload carousel images on hover
+            const carouselContainers = document.querySelectorAll('[class*="carousel-container"]');
+            carouselContainers.forEach(container => {
+                container.addEventListener('mouseenter', function() {
+                    const images = this.querySelectorAll('img[loading="lazy"]');
+                    images.forEach(img => {
+                        if (img.loading === 'lazy') {
+                            img.loading = 'eager';
+                        }
+                    });
+                }, { once: true });
+            });
+            
+            // Intersection Observer for better lazy loading
+            if ('IntersectionObserver' in window) {
+                const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.loading = 'eager';
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                }, { rootMargin: '50px 0px' });
+                
+                lazyImages.forEach(img => imageObserver.observe(img));
+            }
+            
+            // Prefetch likely next pages on hover
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    const target = this.getAttribute('href');
+                    if (target && target !== '#') {
+                        // Preload section content
+                        const section = document.querySelector(target);
+                        if (section) {
+                            const images = section.querySelectorAll('img[loading="lazy"]');
+                            images.forEach(img => img.loading = 'eager');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
