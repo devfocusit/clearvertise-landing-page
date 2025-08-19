@@ -255,11 +255,8 @@
     <link rel="apple-touch-icon" href="logo/logoSymbol.png">
     
     <!-- Load non-critical CSS asynchronously -->
-    <link rel="preload" href="css/main.css?v=1.0.20250810.1909" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="css/main.css?v=1.0.20250810.1909"></noscript>
-    
-    <link rel="preload" href="css/responsive.css?v=1.0.20250810.1909" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="css/responsive.css?v=1.0.20250810.1909"></noscript>
+    <link rel="stylesheet" href="css/main.css?v=1.0.20250810.1909">
+    <link rel="stylesheet" href="css/responsive.css?v=1.0.20250810.1909">
     
     <!-- Load fonts with font-display: swap -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -275,42 +272,8 @@
             // Privacy-focused configuration
             anonymize_ip: true,
             allow_google_signals: false,
-            allow_ad_personalization_signals: false,
-            // Enhanced measurement for Core Web Vitals
-            send_page_view: true,
-            custom_map: {
-                'custom_parameter_1': 'web_vitals_metric'
-            }
+            allow_ad_personalization_signals: false
         });
-        
-        // Core Web Vitals tracking
-        function sendWebVitals() {
-            if ('web-vitals' in window) {
-                const { getCLS, getFID, getFCP, getLCP, getTTFB } = window['web-vitals'];
-                
-                function sendToGA(metric) {
-                    gtag('event', metric.name, {
-                        event_category: 'Web Vitals',
-                        event_label: metric.id,
-                        value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
-                        non_interaction: true,
-                        custom_parameter_1: metric.name
-                    });
-                }
-                
-                getCLS(sendToGA);
-                getFID(sendToGA);
-                getFCP(sendToGA);
-                getLCP(sendToGA);
-                getTTFB(sendToGA);
-            }
-        }
-        
-        // Load web-vitals library
-        const script = document.createElement('script');
-        script.src = 'https://unpkg.com/web-vitals@3/dist/web-vitals.iife.js';
-        script.onload = sendWebVitals;
-        document.head.appendChild(script);
     </script>
     
     <!-- Preload critical resources for better Core Web Vitals -->
@@ -322,21 +285,52 @@
     <style>
         /* Critical CSS for immediate rendering */
         body { margin: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-        .header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
+        
+        /* Complete Header & Logo Styles */
+        .header { background: transparent; position: fixed; width: 100%; top: 0; z-index: 1000; transition: all 0.3s ease; }
+        .header.scrolled { background: rgba(255, 255, 255, 0.95) !important; backdrop-filter: blur(15px); box-shadow: 0 4px 25px rgba(0,0,0,0.15); border-bottom: 1px solid rgba(24, 144, 255, 0.1); }
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; transition: padding 0.3s ease; }
+        .header.scrolled .navbar { padding: 0.75rem 0; }
+        .logo { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-symbol { height: 42px; width: auto; transition: all 0.3s ease; opacity: 1; }
+        .logo-symbol-white { height: 42px; width: auto; transition: all 0.3s ease; opacity: 0; position: absolute; }
+        .header.scrolled .logo-symbol { opacity: 0; }
+        .header.scrolled .logo-symbol-white { opacity: 1; }
+        .logo h2 { color: #fff; font-weight: 700; font-size: 1.5rem; transition: all 0.3s ease; margin: 0; }
+        .logo-text { display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
+        .logo-subtitle { color: #fff; font-size: 0.75rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.5px; margin-top: -6px; transition: all 0.3s ease; opacity: 0.8; }
+        .header.scrolled .logo h2 { color: #1890FF; font-size: 1.4rem; }
+        .header.scrolled .logo-subtitle { color: #1890FF; opacity: 0.7; }
+        
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 90px; }
-        .hero-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .hero h1 { font-size: 3rem; font-weight: 700; color: #1a1a1a; margin: 0 0 1.5rem 0; line-height: 1.2; }
-        .hero p { font-size: 1.2rem; color: #666; margin-bottom: 2rem; line-height: 1.6; }
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 120px; position: relative; background: linear-gradient(135deg, #4A90E2 0%, #1890FF 50%, #0066CC 100%); color: white; overflow: hidden; box-sizing: border-box; }
+        .hero-shape { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #1890FF 0%, #40A9FF 50%, #69C0FF 100%); clip-path: ellipse(80% 60% at 20% 40%); z-index: 1; }
+        .hero-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 2; }
+        .hero-image { position: relative !important; z-index: 3 !important; display: block !important; visibility: visible !important; opacity: 1 !important; width: 100% !important; }
+        .hero h1 { font-size: 3rem; font-weight: 700; color: white; margin: 0 0 1.5rem 0; line-height: 1.2; }
+        .hero p { font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem; line-height: 1.6; }
         .btn-primary { background: #3b82f6; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; display: inline-block; font-weight: 600; transition: all 0.3s ease; }
         .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
-        .main-dashboard-screen { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .main-dashboard-screen { width: 100% !important; height: auto !important; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); max-width: 700px !important; display: block !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 10 !important; }
         .faq-section { padding: 5rem 0; background: #f8fafc; }
         .faq-grid { display: grid; gap: 1.5rem; max-width: 800px; margin: 0 auto; }
         .faq-item { background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
         .faq-question { color: #1a1a1a; margin: 0 0 1rem 0; font-size: 1.25rem; font-weight: 600; cursor: pointer; }
         .faq-answer { color: #666; line-height: 1.6; }
         .faq-question:hover { color: #3b82f6; }
+        
+        /* Critical Logo Styles */
+        .logo { display: flex; align-items: center; gap: 0.75rem; }
+        .logo-symbol { height: 42px; width: auto; transition: all 0.3s ease; opacity: 1; }
+        .logo-symbol-white { height: 42px; width: auto; transition: all 0.3s ease; opacity: 0; position: absolute; }
+        .header.scrolled .logo-symbol { opacity: 0; }
+        .header.scrolled .logo-symbol-white { opacity: 1; }
+        .logo h2 { color: #fff; font-weight: 700; font-size: 1.5rem; transition: all 0.3s ease; margin: 0; }
+        .logo-text { display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
+        .logo-subtitle { color: #fff; font-size: 0.75rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.5px; margin-top: -6px; transition: all 0.3s ease; opacity: 0.8; }
+        .header.scrolled .logo h2 { color: #1890FF; font-size: 1.4rem; }
+        .header.scrolled .logo-subtitle { color: #1890FF; opacity: 0.7; }
+        
         @media (max-width: 768px) {
             .hero-wrapper { grid-template-columns: 1fr; gap: 2rem; }
             .hero h1 { font-size: 2rem; }
@@ -387,16 +381,13 @@
                         </div>
                     </div>
                     <div class="hero-image">
-                        <picture>
-                            <source srcset="screens/dashboard1.webp" type="image/webp">
-                            <img src="screens/dashboard1.gif" alt="Digital Marketing Analytics Dashboard - Real-time Campaign Performance Tracking" 
-                            class="main-dashboard-screen clickable-image" 
-                            width="700" height="450"
-                            style="max-width: 700px; height: auto; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-                            onclick="openImageModal(this.src, this.alt)"
-                            loading="eager"
-                            decoding="async">
-                        </picture>
+                        <img src="screens/dashboard1.gif" alt="Digital Marketing Analytics Dashboard - Real-time Campaign Performance Tracking" 
+                        class="main-dashboard-screen clickable-image" 
+                        width="700" height="450"
+                        style="max-width: 700px; height: auto; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                        onclick="openImageModal(this.src, this.alt)"
+                        loading="eager"
+                        decoding="async">
                     </div>
                 </div>
             </div>
@@ -1155,16 +1146,16 @@
     
     <!-- Performance optimization script -->
     <script>
-        // Service Worker registration
+        // Service Worker registration (optional)
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(registration => console.log('SW registered'))
-                    .catch(error => console.log('SW registration failed'));
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => console.log('SW registered successfully'))
+                    .catch(error => console.log('SW registration failed:', error));
             });
         }
         
-        // Preload next likely user interactions
+        // DOM Content Loaded optimizations
         document.addEventListener('DOMContentLoaded', function() {
             // Preload carousel images on hover
             const carouselContainers = document.querySelectorAll('[class*="carousel-container"]');
@@ -1195,12 +1186,11 @@
                 lazyImages.forEach(img => imageObserver.observe(img));
             }
             
-            // Prefetch likely next pages on hover
+            // Prefetch next sections on hover
             document.querySelectorAll('a[href^="#"]').forEach(link => {
                 link.addEventListener('mouseenter', function() {
                     const target = this.getAttribute('href');
                     if (target && target !== '#') {
-                        // Preload section content
                         const section = document.querySelector(target);
                         if (section) {
                             const images = section.querySelectorAll('img[loading="lazy"]');
