@@ -6,3 +6,41 @@ RewriteRule ^(.*)$ https://clearvertise.com/$1 [R=301,L]
 # Force HTTPS
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://clearvertise.com/$1 [R=301,L]
+
+# Cache Control and Versioning for Static Assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Force revalidation for HTML files (immediate cache invalidation)
+    ExpiresByType text/html "access plus 0 seconds"
+    
+    # Short cache for CSS and JS (1 hour) - query string versioning will handle updates
+    ExpiresByType text/css "access plus 1 hour"
+    ExpiresByType application/javascript "access plus 1 hour"
+    ExpiresByType text/javascript "access plus 1 hour"
+    
+    # Longer cache for images (1 day)
+    ExpiresByType image/png "access plus 1 day"
+    ExpiresByType image/gif "access plus 1 day"
+    ExpiresByType image/jpeg "access plus 1 day"
+    ExpiresByType image/jpg "access plus 1 day"
+    ExpiresByType image/webp "access plus 1 day"
+    ExpiresByType image/svg+xml "access plus 1 day"
+</IfModule>
+
+# Cache Control Headers
+<IfModule mod_headers.c>
+    # Force no-cache for HTML files to ensure fresh content
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+    
+    # Add ETag removal for better cache control
+    <FilesMatch "\.(css|js|png|gif|jpg|jpeg|webp|svg)$">
+        FileETag None
+        Header unset ETag
+        Header set Cache-Control "public, max-age=3600"
+    </FilesMatch>
+</IfModule>

@@ -1,11 +1,11 @@
 // Service Worker for caching and performance optimization
-const CACHE_NAME = 'clearvertise-v1';
+const CACHE_NAME = 'clearvertise-v2.0-20250819';
 const urlsToCache = [
   '/',
-  '/css/main.css',
-  '/css/responsive.css',
-  '/js/main.js',
-  '/js/analytics.js',
+  '/css/main.css?v=2.0.20250819.1630',
+  '/css/responsive.css?v=2.0.20250819.1630',
+  '/js/main.js?v=2.0.20250819.1630',
+  '/js/analytics.js?v=2.0.20250819.1630',
   '/screens/dashboard1.gif',
   '/screens/mediaPlan1.png',
   '/screens/mediaPlan2.png',
@@ -26,6 +26,30 @@ self.addEventListener('install', event => {
       .then(cache => {
         return cache.addAll(urlsToCache);
       })
+      .then(() => {
+        // Force immediate activation of new service worker
+        return self.skipWaiting();
+      })
+  );
+});
+
+// Activate event - clean up old caches
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          // Delete old cache versions
+          if (cacheName !== CACHE_NAME) {
+            console.log('Deleting old cache:', cacheName);
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    }).then(() => {
+      // Take control of all clients immediately
+      return self.clients.claim();
+    })
   );
 });
 
