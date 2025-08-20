@@ -371,11 +371,31 @@
         .header.scrolled .logo h2 { color: #1890FF; font-size: 1.4rem; }
         .header.scrolled .logo-subtitle { color: #1890FF; opacity: 0.7; }
         
+        @media (min-width: 1081px) {
+            .hero { padding-top: 120px; }
+        }
+        
+        @media (max-width: 1080px) and (min-width: 769px) {
+            .hero { padding-top: 100px; }
+            .navbar { padding: 1rem 0; }
+            .header.scrolled .navbar { padding: 0.75rem 0; }
+        }
+        
         @media (max-width: 768px) {
             .hero-wrapper { grid-template-columns: 1fr; gap: 2rem; }
             .hero h1 { font-size: 2rem; }
             .hero p { font-size: 1rem; }
             .faq-item { padding: 1.5rem; }
+            .hero { padding-top: 80px; }
+            .header { background: rgba(255, 255, 255, 0.95) !important; }
+            .navbar { padding: 0.5rem 0; }
+            .nav-menu ul { gap: 0.5rem; }
+            .nav-menu li a { font-size: 0.75rem; padding: 0.25rem 0.4rem; color: #1e293b !important; }
+            .nav-buttons .btn-primary { padding: 0.4rem 0.8rem; font-size: 0.75rem; }
+            .logo h2 { color: #1890FF !important; font-size: 1.1rem; }
+            .logo-subtitle { color: #1890FF !important; opacity: 0.7 !important; }
+            .logo-symbol { opacity: 0 !important; }
+            .logo-symbol-white { opacity: 1 !important; }
         }
     </style>
 </head>

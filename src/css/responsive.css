@@ -8,8 +8,51 @@
     padding: 0 20px;
 }
 
-/* ===== MOBILE STYLES (320px and up) ===== */
-@media (max-width: 1080px) {
+/* ===== SMALL DESKTOP STYLES (1081px and up) ===== */
+@media (min-width: 1081px) {
+    /* Ensure normal desktop behavior */
+    .header {
+        background: transparent;
+    }
+    
+    .hero {
+        padding-top: 120px;
+    }
+}
+
+/* ===== TABLET STYLES (769px to 1080px) ===== */
+@media (max-width: 1080px) and (min-width: 769px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    /* Keep normal header behavior for tablets */
+    .header {
+        background: transparent;
+    }
+    
+    .header.scrolled {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+    }
+    
+    .navbar {
+        padding: 1rem 0;
+    }
+    
+    .header.scrolled .navbar {
+        padding: 0.75rem 0;
+    }
+    
+    /* Hero adjustments for tablets */
+    .hero {
+        padding-top: 100px;
+    }
+}
+
+/* ===== MOBILE STYLES (768px and below) ===== */
+@media (max-width: 768px) {
     /* Prevent horizontal overflow on mobile */
     body {
         overflow-x: hidden !important;
@@ -55,17 +98,18 @@
 
     /* Header Mobile */
     .header {
-        padding: 10px 0;
+        padding: 8px 0;
         background: rgba(255, 255, 255, 0.95) !important;
         backdrop-filter: blur(15px);
         box-shadow: 0 4px 25px rgba(0,0,0,0.15);
     }
     
     .navbar {
-        flex-direction: column;
-        gap: 0.75rem;
+        flex-direction: row; /* Keep horizontal layout to prevent height increase */
+        justify-content: space-between;
         align-items: center;
-        padding: 0.75rem 0;
+        padding: 0.5rem 0;
+        gap: 0.5rem;
     }
     
     .logo h2 {
@@ -90,28 +134,38 @@
     }
     
     .nav-menu ul {
-        flex-wrap: wrap;
+        display: flex;
+        flex-wrap: nowrap;
         justify-content: center;
         gap: 0.5rem;
-        margin: 0.25rem 0;
+        margin: 0;
+        list-style: none;
     }
     
     .nav-menu li a {
-        font-size: 0.85rem;
-        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.4rem;
         color: #1e293b !important; /* Always dark on mobile */
         font-weight: 500;
+        text-decoration: none;
+        white-space: nowrap;
     }
     
     .nav-buttons {
-        display: none; /* Hide nav buttons on mobile */
+        display: flex;
+    }
+    
+    .nav-buttons .btn-primary {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+        white-space: nowrap;
     }
 
     /* Hero Section Mobile */
     .hero {
-        padding: 120px 0 40px; /* Increased top padding to account for header */
+        padding: 80px 0 40px; /* Reduced top padding since header is now more compact */
         text-align: center;
-        min-height: calc(100vh - 80px); /* Adjust min-height to account for header */
+        min-height: calc(100vh - 60px); /* Reduced header space compensation */
     }
     
     .hero-wrapper {
