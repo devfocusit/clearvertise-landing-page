@@ -1,11 +1,11 @@
 // Service Worker for caching and performance optimization
-const CACHE_NAME = 'clearvertise-v2.0-20250820-responsive-fix';
+const CACHE_NAME = 'clearvertise-v2.0-20250820-mobile-nav-fix';
 const urlsToCache = [
   '/',
-  '/css/main.css?v=2.0.20250820.1400',
-  '/css/responsive.css?v=2.0.20250820.1400',
-  '/js/main.js?v=2.0.20250820.1400',
-  '/js/analytics.js?v=2.0.20250820.1400',
+  '/css/main.css?v=2.0.20250820.1430',
+  '/css/responsive.css?v=2.0.20250820.1430',
+  '/js/main.js?v=2.0.20250820.1430',
+  '/js/analytics.js?v=2.0.20250820.1430',
   '/screens/dashboard1.gif',
   '/screens/mediaPlan1.png',
   '/screens/mediaPlan2.png',
