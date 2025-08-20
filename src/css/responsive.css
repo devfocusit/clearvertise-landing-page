@@ -20,6 +20,14 @@
     }
 }
 
+/* ===== SMALL MOBILE (481px to 600px) - Handle menu wrapping ===== */
+@media (max-width: 600px) and (min-width: 481px) {
+    .hero {
+        padding: 110px 0 40px; /* Extra padding for screens where menu might wrap more */
+        min-height: calc(100vh - 90px);
+    }
+}
+
 /* ===== VERY SMALL MOBILE (under 480px) ===== */
 @media (max-width: 480px) {
     .navbar {
@@ -50,7 +58,7 @@
     }
     
     .hero {
-        padding: 75px 0 30px;
+        padding: 90px 0 30px; /* Adequate padding for very small screens with wrapped menu */
     }
 }
 
@@ -238,9 +246,9 @@
 
     /* Hero Section Mobile */
     .hero {
-        padding: 80px 0 40px; /* Reduced top padding since header is now more compact */
+        padding: 100px 0 40px; /* Increased top padding to account for taller wrapped menu */
         text-align: center;
-        min-height: calc(100vh - 60px); /* Reduced header space compensation */
+        min-height: calc(100vh - 80px); /* Adjust for taller header */
     }
     
     .hero-wrapper {

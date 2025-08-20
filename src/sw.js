@@ -1,11 +1,11 @@
 // Service Worker for caching and performance optimization
-const CACHE_NAME = 'clearvertise-v2.0-20250820-mobile-nav-fix';
+const CACHE_NAME = 'clearvertise-v2.0-20250820-hero-overlap-fix';
 const urlsToCache = [
   '/',
-  '/css/main.css?v=2.0.20250820.1430',
-  '/css/responsive.css?v=2.0.20250820.1430',
-  '/js/main.js?v=2.0.20250820.1430',
-  '/js/analytics.js?v=2.0.20250820.1430',
+  '/css/main.css?v=2.0.20250820.1445',
+  '/css/responsive.css?v=2.0.20250820.1445',
+  '/js/main.js?v=2.0.20250820.1445',
+  '/js/analytics.js?v=2.0.20250820.1445',
   '/screens/dashboard1.gif',
   '/screens/mediaPlan1.png',
   '/screens/mediaPlan2.png',

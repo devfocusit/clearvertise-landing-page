@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Cache-busting timestamp: 2025-08-20 14:30 - Mobile Navigation Fix -->
+<!-- Cache-busting timestamp: 2025-08-20 14:45 - Hero Overlap Fix -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
@@ -296,8 +296,8 @@
     <link rel="apple-touch-icon" href="logo/logoSymbol.png">
     
     <!-- Load non-critical CSS asynchronously -->
-    <link rel="stylesheet" href="css/main.css?v=2.0.20250820.1430">
-    <link rel="stylesheet" href="css/responsive.css?v=2.0.20250820.1430">
+    <link rel="stylesheet" href="css/main.css?v=2.0.20250820.1445">
+    <link rel="stylesheet" href="css/responsive.css?v=2.0.20250820.1445">
     
     <!-- Load fonts with font-display: swap -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -319,7 +319,7 @@
     
     <!-- Preload critical resources for better Core Web Vitals -->
     <link rel="preload" href="screens/dashboard1.gif" as="image">
-    <link rel="preload" href="css/main.css?v=2.0.20250820.1430" as="style">
+    <link rel="preload" href="css/main.css?v=2.0.20250820.1445" as="style">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
     
     <!-- Critical CSS for above-the-fold content -->
@@ -387,7 +387,7 @@
             .hero h1 { font-size: 2rem; }
             .hero p { font-size: 1rem; }
             .faq-item { padding: 1.5rem; }
-            .hero { padding-top: 80px; }
+            .hero { padding-top: 100px; min-height: calc(100vh - 80px); }
             .header { background: rgba(255, 255, 255, 0.95) !important; padding: 6px 0; }
             .navbar { padding: 0.4rem 0; flex-direction: column; gap: 0.3rem; }
             .logo { order: 1; margin-bottom: 0.2rem; }
@@ -408,7 +408,7 @@
             .logo-symbol, .logo-symbol-white { height: 28px; }
             .nav-menu ul { gap: 0.2rem 0.3rem; }
             .nav-menu li a { font-size: 0.65rem; padding: 0.15rem 0.25rem; }
-            .hero { padding-top: 75px; }
+            .hero { padding-top: 90px; }
         }
     </style>
 </head>
@@ -1214,8 +1214,8 @@
     </div>
 
 
-    <script src="js/main.js?v=2.0.20250820.1430" defer></script>
-    <script src="js/analytics.js?v=2.0.20250820.1430" defer></script>
+    <script src="js/main.js?v=2.0.20250820.1445" defer></script>
+    <script src="js/analytics.js?v=2.0.20250820.1445" defer></script>
     
     <!-- Performance optimization script -->
     <script>
